@@ -39,11 +39,11 @@ var userSchema = mongoose.Schema({
     favoriteEvent: {
         type: [Number],
         required: true
-    },
-    icon: {
-        data: Buffer,
-        contentType: String
-    }
+    } //,
+    //icon: {
+    //data: Buffer,
+    //contentType: String
+    //}
 });
 
 userSchema.plugin(autoIncrement.plugin, {
@@ -53,35 +53,36 @@ userSchema.plugin(autoIncrement.plugin, {
 
 
 //image insert
-module.exports = new mongoose.model('icon', userSchema);
+//module.exports = new mongoose.model('icon', userSchema);
 
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.json());
+//app.use(bodyParser.urlencoded({ extended: false }));
+//app.use(bodyParser.json());
 
-var fs = require('fs');
-var multer = require('multer');
-var path = require('path');
+//var fs = require('fs');
+//var multer = require('multer');
+//var path = require('path');
 
-var storage = multer.diskstorage({
-    destination: (req, file, cb) => {
-        cb(null, 'uploads')
-    },
-    filename: (req, file, cb) => {
-        cb(null, file.fieldname)
-    }
-});
+//var storage = multer.diskstorage({
+//destination: (req, file, cb) => {
+//cb(null, 'uploads')
+//},
+//filename: (req, file, cb) => {
+//cb(null, file.fieldname)
+//}
+//});
 
-var imgModel = require('./model');
+//var imgModel = require('./model');
 
-app.get('/', (req, res) => {
-    imgModel.find({}, (err, items) => {
-        if (err) {
-            console.log(err);
-        } else {
-            res.render('app', { items: item });
-        }
-    });
-});
+//app.get('/', (req, res) => {
+//imgModel.find({}, (err, items) => {
+//if (err) {
+//console.log(err);
+//}
+//else {
+//res.render('app', { items: item });
+//}
+//});
+//});
 
 
 
@@ -89,12 +90,12 @@ app.get('/', (req, res) => {
 //code to create user account
 var user = mongoose.model('User, userSchema');
 
-app.use(multer({
-    dest: './2720proj-icons/',
-    rename: function(fieldname, filename) {
-        return filename;
-    }
-}))
+//app.use(multer({
+//dest: './2720proj-icons/',
+//rename: function(fieldname, filename) {
+//return filename;
+//}
+//}))
 
 app.post('/insertUser', function(req, res) {
 
@@ -102,10 +103,10 @@ app.post('/insertUser', function(req, res) {
         username: req.body['username'],
         password: req.body['password'],
         $push: { favoriteEvent: -1 },
-        icon: {
-            data = fs.readfileSync(req.files.userphoto.path),
-            contentType = 'image/png'
-        }
+        //icon: {
+        //data = fs.readfileSync(req.files.userphoto.path),
+        //contentType = 'image/png'
+        //}
     })
 
 });
