@@ -1,7 +1,6 @@
 var express = require('express');
 var app = express();
 const path = require('path');
-const router = express.Router
 
 // var autoIncrement = require('mongoose-auto-increment');
 // autoIncrement.initialize(mongoose.connection);
@@ -21,6 +20,8 @@ db.on('error', console.error.bind(console, 'Connection error'));
 db.once('open', function() {
     console.log("Connected succesfully");
 });
+
+var server = app.listen(2003);
 
 // var userSchema = mongoose.Schema({
 //     userID: {
