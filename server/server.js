@@ -46,10 +46,10 @@ var userSchema = mongoose.Schema({
     //}
 });
 
-userSchema.plugin(autoIncrement.plugin, {
-    model: 'User',
-    field: 'userID'
-})
+// userSchema.plugin(autoIncrement.plugin, {
+//     model: 'User',
+//     field: 'userID'
+// })
 
 
 //image insert
