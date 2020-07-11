@@ -1,6 +1,7 @@
 var express = require('express');
-
 var app = express();
+const path = require('path');
+const router = express.Router
 
 // var autoIncrement = require('mongoose-auto-increment');
 // autoIncrement.initialize(mongoose.connection);
@@ -94,15 +95,19 @@ db.once('open', function() {
 //return filename;
 //}
 //}))
-app.get('/', function(req,res){
-    res.sendFile("../src/index.html");
+router.get('/', function(req,res){
+    res.sendFile(path.join(__dirname+"/../src/index.html"));
 });
 
-app.get('/createAccount',function(req,res){
-    res.sendFile("../src/createAC.html");
-})
+router.get('/createAccount',function(req,res){
+    res.sendFile(path.join(__dirname+"../src/createAC.html"))
+});
 
-var server = app.listen(2003);
+
+app.use('/',router);
+app.listen(process.env.port || 2009);
+
+
 // app.post('/insertUser', function(req, res) {
 
 //     var e = new user({
