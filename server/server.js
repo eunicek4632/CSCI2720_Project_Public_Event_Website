@@ -98,7 +98,8 @@ var server = app.listen(2003);
 //}))
 
 app.get('/', function(req,res){
-    res.sendFile("./index.html");
+    res.sendFile(path.join(__dirname+"/index.html"));
+    console.log(__dirname);
 });
 
 app.get('/hi', function(req,res){
