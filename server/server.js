@@ -21,30 +21,30 @@ db.once('open', function() {
     console.log("Connected succesfully");
 });
 
-var userSchema = mongoose.Schema({
-    userID: {
-        type: Number,
-        required: true,
-        unique: true
-    },
-    username: {
-        type: String,
-        required: true,
-        unique: true
-    },
-    password: {
-        type: String,
-        required: true
-    },
-    favoriteEvent: {
-        type: [Number],
-        required: true
-    } //,
-    //icon: {
-    //data: Buffer,
-    //contentType: String
-    //}
-});
+// var userSchema = mongoose.Schema({
+//     userID: {
+//         type: Number,
+//         required: true,
+//         unique: true
+//     },
+//     username: {
+//         type: String,
+//         required: true,
+//         unique: true
+//     },
+//     password: {
+//         type: String,
+//         required: true
+//     },
+//     favoriteEvent: {
+//         type: [Number],
+//         required: true
+//     } //,
+//     //icon: {
+//     //data: Buffer,
+//     //contentType: String
+//     //}
+// });
 
 // userSchema.plugin(autoIncrement.plugin, {
 //     model: 'User',
@@ -86,7 +86,7 @@ var userSchema = mongoose.Schema({
 
 
 //code to create user account
-var user = mongoose.model('User, userSchema');
+// var user = mongoose.model('User, userSchema');
 
 //app.use(multer({
 //dest: './2720proj-icons/',
@@ -101,16 +101,17 @@ app.get('/', function(req,res){
 app.get('/createAccount',function(req,res){
     res.sendFile("../src/createAC.html");
 })
-app.post('/insertUser', function(req, res) {
 
-    var e = new user({
-        username: req.body['username'],
-        password: req.body['password'],
-        $push: { favoriteEvent: -1 },
-        //icon: {
-        //data = fs.readfileSync(req.files.userphoto.path),
-        //contentType = 'image/png'
-        //}
-    })
+// app.post('/insertUser', function(req, res) {
 
-});
+//     var e = new user({
+//         username: req.body['username'],
+//         password: req.body['password'],
+//         $push: { favoriteEvent: -1 },
+//         //icon: {
+//         //data = fs.readfileSync(req.files.userphoto.path),
+//         //contentType = 'image/png'
+//         //}
+//     })
+
+// });
