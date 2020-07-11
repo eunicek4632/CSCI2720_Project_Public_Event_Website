@@ -1,0 +1,19 @@
+{
+  "name": "proj2720",
+  "version": "1.0.0",
+  "description": "project a tiny social network for some events in Hong Kong",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/airommel/proj2720.git"
+  },
+  "author": "airommel,cheng,ko",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/airommel/proj2720/issues"
+  },
+  "homepage": "https://github.com/airommel/proj2720#readme"
+}
