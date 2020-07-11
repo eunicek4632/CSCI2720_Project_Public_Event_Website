@@ -97,7 +97,7 @@ db.once('open', function() {
 //}))
 
 app.get('/', function(req,res){
-    res.sendFile(path.join(__dirname+"/../src/index.html"));
+    res.sendFile("index.html");
 });
 // router.get('/', function(req,res){
 //     res.sendFile(path.join(__dirname+"/../src/index.html"));
