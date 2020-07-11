@@ -2,8 +2,8 @@ var express = require('express');
 
 var app = express();
 
-var autoIncrement = require('mongoose-auto-increment');
-autoIncrement.initialize(mongoose.connection);
+// var autoIncrement = require('mongoose-auto-increment');
+// autoIncrement.initialize(mongoose.connection);
 
 var bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({
@@ -11,7 +11,7 @@ app.use(bodyParser.urlencoded({
 }))
 
 var mongoose = require('mongoose');
-mongoose.connect('mongodb://thcheng6:x79714@localhost/thcheng6');
+mongoose.connect('mongodb://zxip5:x35197@localhost/zxip5');
 
 var db = mongoose.connection;
 //upon connection failure
