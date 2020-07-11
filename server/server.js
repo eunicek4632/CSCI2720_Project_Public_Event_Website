@@ -97,7 +97,11 @@ db.once('open', function() {
 //}))
 
 app.get('/', function(req,res){
-    res.sendFile("index.html");
+    res.sendFile("/index.html");
+});
+
+app.get('/hi', function(req,res){
+    res.send("hello world");
 });
 // router.get('/', function(req,res){
 //     res.sendFile(path.join(__dirname+"/../src/index.html"));
