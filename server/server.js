@@ -102,6 +102,7 @@ app.get('/createAccount',function(req,res){
     res.sendFile("../src/createAC.html");
 })
 
+var server = app.listen(2003);
 // app.post('/insertUser', function(req, res) {
 
 //     var e = new user({
