@@ -98,6 +98,9 @@ app.get('/', function(req,res){
     res.sendFile("../src/index.html");
 });
 
+app.get('/createAccount',function(req,res){
+    res.sendFile("../src/createAC.html");
+})
 app.post('/insertUser', function(req, res) {
 
     var e = new user({
