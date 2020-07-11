@@ -2,8 +2,6 @@ var express = require('express');
 var app = express();
 const path = require('path');
 
-// var autoIncrement = require('mongoose-auto-increment');
-// autoIncrement.initialize(mongoose.connection);
 
 var bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({
@@ -25,7 +23,6 @@ db.once('open', function() {
 
 // Config
 var server = app.listen(2003);
-
 
 
 app.get('/', function(req,res){
