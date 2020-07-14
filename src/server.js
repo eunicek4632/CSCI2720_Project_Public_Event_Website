@@ -69,7 +69,7 @@ app.post('/insertUser', function(req, res) {
 
     var idMax;
     user.findOne()
-        .sort('-eventID')
+        .sort('-userID')
         .exec(function(err, e) {
             if (e == null) {
                 idMax = 0;

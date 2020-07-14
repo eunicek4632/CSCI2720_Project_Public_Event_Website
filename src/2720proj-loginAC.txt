@@ -1,8 +1,8 @@
 2720 proj user database 
 
-UserID          Username        Password        Array of favourite Event ID     Icon Image Address 
-1               test            test01          0                               (?)
-2               Adams           adams01         0                               (?) 
-3               Eunice          eunice01        0                               (?)
-4               Brian           brian01         0                               (?)
+UserID          Username        Password        	Array of favourite Event ID     Icon Image Address 
+1               test            123		0                               (?)
+2               adams           456		0                               (?) 
+3               eunice          789		0                               (?)
+4               brian           000		0                               (?)
 
