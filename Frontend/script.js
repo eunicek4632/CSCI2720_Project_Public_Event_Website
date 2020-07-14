@@ -22,6 +22,7 @@ $(document).ready(function(){
         }
     });
     //when any event is clicked
+    /*
     $(document).on("click","tr", function(){
         var id = $(this).attr("id");
         var att = $(this).find("div").html();
@@ -33,47 +34,12 @@ $(document).ready(function(){
             x.style.display = "none";
           }
         
-    });
+    });*/
 });
 
-var data;
-function login(){
-    $.ajax({
-        url: "data.txt",
-        type: "GET"
-    })
-    .done(function(txt) {
-        //get data
-        //create each table row
-        data = JSON.parse(txt);
-        $.ajax({
-            url: "Home.html",
-            type: "GET"
-        })
-        .done(function(txt){
-            $("#main").html(txt);
-            data.map((e, index)=>{
-                var $temp = $('<tr id="'+ index +'">\
-                <th scope="row" class="p-3">'+e.event_summary+'</th>\
-                <td class="p-3 ">'+e.event_location+'</td>\
-                <td class="p-3 ">'+e.event_date+'</td>\
-                <td class="p-3 ">'+ e.event_org + '</td>\
-                <td class="p-3"><button></button></td>');
-                
-                if(fav.indexOf(e.id) == -1){
-                    $temp.find("button").html("Add to Favourites");
-                }
-                else{
-                    $temp.find("button").html("Undo Favourites");
-                }
-                $temp.find("button").attr("id",index);
-                $temp.find("button").addClass("like");
 
-                $("#evts").append($temp);
-            });
-        });
-    });
-}
+//load next page after login --Wrong
+/*
 function fav(){
     $.ajax({
         url: "favourites.html",
@@ -83,24 +49,27 @@ function fav(){
         $("#main").html(txt);
     });
 }
-
+*/
 function show(){
     alert(history.length);
 }
 
 function verify(){
     var user = document.getElementById("username").value;
-    var pass = document.getElementById("password").value;
+    var pass = document.getElementById("pw").value;
     if(user == '' || pass == '')
         alert("You cannot leave any of the fields empty");
     else{
         //initiate HTTP request to verify user
         $.ajax({
-        url: "",
-        type: "POST"
+            url: "",
+            type: "POST"
         })
         .done(function(txt) { // run if request is completed successfully
-        $("#text").html(txt);
+            $("#text").html(txt);
         })
     }
 }
+
+//data verification http request
+//data type of event id

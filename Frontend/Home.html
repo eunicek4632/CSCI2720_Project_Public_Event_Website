@@ -1,4 +1,4 @@
-<!--
+<!--old layout
 <div class="jumbotron">
     <h1 class="display-4">Event Name</h1>
     <p class="lead">Event Summary</p>
@@ -9,20 +9,99 @@
     </p>
 </div>
 -->
-<div>
-<table class="table table-sm">
-  <thead>
-    <tr>
-      <th scope="col">Events</th>
-      <th scope="col">Location</th>
-      <th scope="col">Date</th>
-      <th scope="col">Organizer</th>
-      <th scope="col">Add to Favourites</th>
-    </tr>
-  </thead>
-  <tbody id="evts">
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
-  </tbody>
-</table>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <script src="Home.js"></script>
+</head>
+<body>
+    <!--Navbar-->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+      <a class="navbar-brand" href="#">Events</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active mx-3">
+            <a class="nav-link" href="/home.html"><i class="fa fa-home"> </i> Home<span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item mx-3">
+            <a class="nav-link" href="" onclick="fav()"><i class="fa fa-heart"> </i> Favourites</a>
+          </li>
+          <li class="nav-item mx-3">
+            <a class="nav-link" href="">Flush</a>
+          </li>
+        </ul>
+        <a class="nav-link" href="#">Log out</a>
+      </div>
+    </nav>
+    <!--Search Bar and dropdown list-->
+    <br>
+    <div class="container">
+      <div class="media">
+        <div class="dropdown mx-3">
+          <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Search Criteria<span class="caret"></span></button>
+          <ul class="dropdown-menu">
+            <li id="event" onclick="search('Event')"><a>Event</a></li>
+            <li id="loc" onclick="search('Location')"><a>Location</a></li>
+            <li id="org" onclick="search('Organizer')"><a>Organizer</a></li>
+            <!--<li><a href="#">Number of Favourites</a></li>-->
+          </ul>
+        </div>
+        <div class="media-body">
+          <form class="form-inline my-2 my-lg-0">
+            <!--Criteria Display-->
+            <input class="form-control mr-sm-2 mx-2" type="text" id="show" value="Event" disabled>
+            <!--Search Bar-->
+            <input class="form-control mr-sm-2" id="input" type="search" placeholder="Search" aria-label="Search" onkeyup="menu()">
+            
+            <!--Execute Searc(function duplicated)-->
+            <button type="button" class="btn btn-info" onclick="menu()">
+              <span class="glyphicon glyphicon-search"></span> Search
+            </button>
+            <button type="button" class="btn btn-primary mx-2" onclick="menu()">
+              <span class="glyphicon glyphicon-search"></span> Add Event
+            </button>
+          </form>
+        </div>
+        <!--
+        <div class="dropdown-menu media-body" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="#">Event ID</a>
+          <a class="dropdown-item" href="#">Location ID</a>
+          <a class="dropdown-item" href="#">Number of Favourites</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="#">Something else here</a> 
+        </div>-->
+      </div>
+    
+      <!--Start of the table-->
+      <br>
+      <div>
+        <table class="table table-sm" id="table">
+          <thead>
+            <tr>
+              <th class="p-3" scope="col" onclick="sortTable(0)">Events</th>
+              <th class="p-3" scope="col" onclick="sortTable(1)">Location</th>
+              <th class="p-3" scope="col" onclick="sortTable(2)">Organizer</th>
+              <th class="p-4" scope="col">Add to Favourites</th>
+              <th class="p-3" scope="col">Delete</th>
+            </tr>
+          </thead>
+          <tbody id="evts">
 
-</div>
+          </tbody>
+        </table>
+        <h3 id="na" style="display:none;">No results found</h3>
+      </div>
+  </div>
+</body>
+</html>
