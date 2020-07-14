@@ -45,7 +45,7 @@ var userSchema = mongoose.Schema({
 
 
 //code to create user account
-var user = mongoose.model('User, userSchema');
+var user = mongoose.model('user', userSchema);
 
 //app.get('/', function(req, res) {
 //    res.sendFile(path.join(__dirname + "/index.html"));
