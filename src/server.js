@@ -20,7 +20,7 @@ db.once('open', function() {
 
 var userSchema = mongoose.Schema({
     userID: {
-        type: ObjectId,
+        type: Number,
         required: true,
         unique: true
     },
