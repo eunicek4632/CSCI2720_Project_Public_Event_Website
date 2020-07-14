@@ -101,6 +101,22 @@ app.post('/insertUser', function(req, res) {
 var server = app.listen(2019);
 
 
+function verify(){
+    var user = document.getElementById("username").value;
+    var pass = document.getElementById("pw").value;
+    if(user == '' || pass == '')
+        alert("You cannot leave any of the fields empty");
+    else{
+        //initiate HTTP request to verify user
+        $.ajax({
+            url: "",
+            type: "POST"
+        })
+        .done(function(txt) { // run if request is completed successfully
+            $("#text").html(txt);
+        })
+    }
+}
 
 //image insert
 //module.exports = new mongoose.model('icon', userSchema);
