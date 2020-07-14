@@ -10,6 +10,9 @@ app.use(bodyParser.urlencoded({
 var mongoose = require('mongoose');
 mongoose.connect('mongodb://thcheng6:x79714@localhost/thcheng6');
 
+//listen to port x
+var server = app.listen(2019);
+
 var db = mongoose.connection;
 //upon connection failure
 db.on('error', console.error.bind(console, 'Connection error'));
@@ -97,8 +100,6 @@ app.post('/insertUser', function(req, res) {
         });
 });
 
-//listen to port x
-var server = app.listen(2019);
 
 
 function verify(){
