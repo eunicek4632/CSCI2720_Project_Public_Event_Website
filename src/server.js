@@ -34,7 +34,7 @@ var userSchema = mongoose.Schema({
         required: true
     },
     favoriteEvent: {
-        type: [ObjectId],
+        type: [Number],
         required: true
     } //,
     //     //icon: {
