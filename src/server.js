@@ -76,7 +76,7 @@ app.post('/insertUser', function(req, res) {
             } else {
                 idMax = e.userID;
             }
-            console.log(idMax)
+            console.log(idMax);
             var f = new user({
                 userID: idMax + 1,
                 username: req.body['username'],
