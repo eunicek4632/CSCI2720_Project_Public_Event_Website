@@ -80,7 +80,9 @@ app.post('/insertUser', function(req, res) {
                 userID: idMax + 1,
                 username: req.body['username'],
                 password: req.body['password'],
-                $push: { favoriteEvent: -1 }, //-1 means just initialized, upon insert new event, this element (element 0) will become '0', means some events are saved into it
+                $push: {
+                    favoriteEvent: 0
+                }
                 //icon: {
                 //data = fs.readfileSync(req.files.userphoto.path),
                 //contentType = 'image/png'
@@ -89,7 +91,7 @@ app.post('/insertUser', function(req, res) {
             f.save(function(err) {
                 if (err)
                     res.send(err);
-                res.send("User inserted.");
+                res.send("User inserted with ID = " + f.userID);
             });
         });
 });
