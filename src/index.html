@@ -49,15 +49,16 @@
 
 <script>
   function changePage(page){
-    if (page == 'home') {
-      console.log("hi");
-      $("#shell").load("./login.html");
-    }
-    else if (page == 'favourites'){
-      $("#shell").load(path.join(__dirname + "/favourites.html"))
+    $ajax({
+      url: "login.html",
+      type: "GET",
+      dataType: "text/html",
 
-    }
-    history.pushState(null, null, page);
+      success: function(response) {
+        console.log('the page is loaded')
+        $('#shell').html(response);
+      }
+    })
   }
 </script>
 
