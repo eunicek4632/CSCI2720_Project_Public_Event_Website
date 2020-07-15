@@ -50,6 +50,39 @@ var userSchema = mongoose.Schema({
 //code to create user account
 var user = mongoose.model('user', userSchema);
 
+
+var commentSchema = mongoose.Schema({
+    commentID: {
+        type: Number,
+        required: true,
+        unique: true
+    },
+    eventID: {
+        type: String,
+        required: true
+    },
+    userID: {
+        type: Number,
+        required: true
+    },
+    content: {
+        type: String,
+        required: true
+    },
+    timestamp: {
+        type: Date,
+        required: true
+    },
+    like: {
+        type: Number,
+        required: true
+    }
+});
+
+
+//code to create user account
+var comment = mongoose.model('comment', commentSchema);
+
 //app.get('/', function(req, res) {
 //    res.sendFile(path.join(__dirname + "/index.html"));
 //    console.log(__dirname);
@@ -101,23 +134,72 @@ app.post('/insertUser', function(req, res) {
 });
 
 
+app.post('/insertComment', function(req, res) {
 
-function verify(){
-    var user = document.getElementById("username").value;
-    var pass = document.getElementById("pw").value;
-    if(user == '' || pass == '')
+    var idMax;
+    user.findOne()
+        .sort('-commentID')
+        .exec(function(err, e) {
+            if (e == null) {
+                idMax = 0;
+            } else {
+                idMax = e.commentID;
+            }
+            var f = new user({
+                commentID: idMax + 1,
+                eventID: req.body['eventID'], //to be changed into history auto-fetch
+                userID: req.body['userID'], // to be changed into history auto-fetch
+                content: req.body['content'], // to be changed into history auto-fetch
+                timestamp: Date.Now,
+                like: 0
+            })
+            f.save(function(err) {
+                if (err)
+                    res.send(err);
+                res.send("Comment inserted with id=" + f.commentID);
+            });
+        });
+});
+
+
+
+
+function verify() {
+    var username1 = document.getElementById("username").value;
+    var password1 = document.getElementById("pw").value;
+    if (username1 == '' || password1 == '')
         alert("You cannot leave any of the fields empty");
-    else{
+    else {
         //initiate HTTP request to verify user
-        $.ajax({
-            url: "",
-            type: "POST"
-        })
-        .done(function(txt) { // run if request is completed successfully
-            $("#text").html(txt);
-        })
+        //$.ajax({
+        //url: "",
+        //type: "POST"
+        //})
+        //.done(function(txt) { // run if request is completed successfully
+        //$("#text").html(txt);
+        //})
+        user.findOne()
+            .where({ username: username1 })
+            .exec(function(err, e) {
+                if (e.password == password1) {
+                    alert("Logged in.");
+                } else {
+                    alert("Password incorrect.");
+                    document.getElementById("pw").value = "";
+                }
+            })
+            .catch(function(err) {
+                // handle error
+                alert("Username incorrect.");
+            });
+
+
     }
 }
+
+//listen to port x
+var server = app.listen(2019);
+
 
 //image insert
 //module.exports = new mongoose.model('icon', userSchema);
