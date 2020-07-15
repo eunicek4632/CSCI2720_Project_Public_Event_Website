@@ -96,7 +96,7 @@ app.get('/login', function(req, res) {
 
 app.get('/favorites', function(req, res) {
     console.log("hi there");
-   res.sendFile(path.join(__dirname + "/favorites.html"));
+   res.sendFile(path.join(__dirname + "/favourites.html"));
    
 });
 
