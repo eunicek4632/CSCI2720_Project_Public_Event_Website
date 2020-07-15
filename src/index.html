@@ -55,6 +55,7 @@
       dataType: "text",
 
       success: function(response) {
+        history.pushState(null,null,page);
         console.log('the page is loaded')
         $('#shell').html(response);
       },
@@ -66,7 +67,7 @@
       }
     });
 
-    history.pushState(null,null,page);
+
   }
 </script>
 
