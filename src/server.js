@@ -8,10 +8,10 @@ app.use(bodyParser.urlencoded({
 }))
 
 var mongoose = require('mongoose');
-mongoose.connect('mongodb://thcheng6:x79714@localhost/thcheng6');
+mongoose.connect('mongodb://zxip5:x35197@localhost/zxip5');
 
 //listen to port x
-var server = app.listen(2019);
+var server = app.listen(2003);
 
 var db = mongoose.connection;
 //upon connection failure
@@ -46,8 +46,9 @@ var userSchema = mongoose.Schema({
     //     //}
 });
 
-
+//
 //code to create user account
+//
 var user = mongoose.model('user', userSchema);
 
 
@@ -80,20 +81,31 @@ var commentSchema = mongoose.Schema({
 });
 
 
-//code to create user account
 var comment = mongoose.model('comment', commentSchema);
 
-//app.get('/', function(req, res) {
-//    res.sendFile(path.join(__dirname + "/index.html"));
-//    console.log(__dirname);
-//});
+app.get('/', function(req, res) {
+   res.sendFile(path.join(__dirname + "/index.html"));
+   console.log(__dirname);
+});
+
+app.get('/login', function(req, res) {
+    console.log("hi there");
+   res.sendFile(path.join(__dirname + "/login.html"));
+   
+});
+
+app.get('/favourites', function(req, res) {
+    console.log("hi there");
+   res.sendFile(path.join(__dirname + "/favourites.html"));
+   
+});
 
 // router.get('/', function(req,res){
 //     res.sendFile(path.join(__dirname+"/../src/index.html"));
 // });
 
 // router.get('/createAccount',function(req,res){
-//     res.sendFile(path.join(__dirname+"../src/createAC.html"))
+//     res.sendFile(path.join(__dirname+"/../src/createAC.html"))
 // });
 
 
