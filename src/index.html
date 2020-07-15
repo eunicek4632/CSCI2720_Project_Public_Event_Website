@@ -49,7 +49,7 @@
 
 <script>
   function changePage(page){
-    var link = "/"+page;
+    var link = "'/"+page+"'";
     $.ajax({
       url: link,
       type: "GET",
