@@ -62,7 +62,8 @@
       dataType: "text",
 
       success: function(response) {
-        history.pushState(null,null,page);
+
+        history.pushState(page,null,page);
         console.log('the page is loaded')
         $('#shell').html(response);
       },
@@ -76,6 +77,12 @@
 
     return false;
   }
+
+  window.addEventListener('popstate',function(e){
+    var data = e.state;
+
+    changePage(data);
+  });
 </script>
 
 </html>
