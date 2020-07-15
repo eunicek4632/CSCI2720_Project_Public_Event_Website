@@ -100,18 +100,6 @@ app.get('/favourites', function(req, res) {
    
 });
 
-// router.get('/', function(req,res){
-//     res.sendFile(path.join(__dirname+"/../src/index.html"));
-// });
-
-// router.get('/createAccount',function(req,res){
-//     res.sendFile(path.join(__dirname+"/../src/createAC.html"))
-// });
-
-
-// app.use('/',router);
-// app.listen(process.env.port || 2009);
-
 
 app.post('/insertUser', function(req, res) {
 
