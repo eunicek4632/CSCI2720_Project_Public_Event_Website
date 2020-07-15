@@ -197,9 +197,6 @@ function verify() {
     }
 }
 
-//listen to port x
-var server = app.listen(2019);
-
 
 //image insert
 //module.exports = new mongoose.model('icon', userSchema);
