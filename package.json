@@ -2,9 +2,9 @@
   "name": "proj2720",
   "version": "1.0.0",
   "description": "project a tiny social network for some events in Hong Kong",
-  "main": "server/server.js",
+  "main": "src/server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node src/server.js"
   },
   "repository": {
     "type": "git",
