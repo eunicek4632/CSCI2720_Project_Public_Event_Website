@@ -83,10 +83,10 @@ var commentSchema = mongoose.Schema({
 
 var comment = mongoose.model('comment', commentSchema);
 
-//app.get('/', function(req, res) {
-//    res.sendFile(path.join(__dirname + "/index.html"));
-//    console.log(__dirname);
-//});
+app.get('/', function(req, res) {
+   res.sendFile(path.join(__dirname + "/index.html"));
+   console.log(__dirname);
+});
 
 // router.get('/', function(req,res){
 //     res.sendFile(path.join(__dirname+"/../src/index.html"));
