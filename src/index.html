@@ -49,8 +49,9 @@
 
 <script>
   function changePage(page){
+    var link = "/"+page;
     $.ajax({
-      url: "/login",
+      url: link,
       type: "GET",
       dataType: "text",
 
