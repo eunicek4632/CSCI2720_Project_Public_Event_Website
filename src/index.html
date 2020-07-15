@@ -51,9 +51,10 @@
   function changePage(page){
     var link;
     if (page == 'home') 
-      { link = "/login"};
-    else if (page == 'favourites') 
-      { link = "/favourites"};
+      { link = "/login";}
+
+    else if (page == 'favourites')
+      { link = "/favourites";}
 
     $.ajax({
       url: link,
