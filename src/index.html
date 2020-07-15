@@ -42,7 +42,7 @@
     </div>
   </nav>
 
-  <div id="shell"></div>
+  <div id="shell"> <p>hi</p></div>
 
 
 </body>
@@ -50,6 +50,7 @@
 <script>
   function changePage(page){
     if (page == 'home') {
+      console.log("hi");
       $("#shell").load(path.join(__dirname + "/login.html"));
     }
     else if (page == 'favourites'){
