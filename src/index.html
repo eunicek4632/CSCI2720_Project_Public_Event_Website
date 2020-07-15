@@ -78,11 +78,11 @@
     return false;
   }
 
-  window.addEventListener('popstate',function(e){
+  window.onpopstate = function(e){
+    console.log("popped!");
     var data = e.state;
-    console.log("changed!!");
     changePage(data);
-  });
+  }
 </script>
 
 </html>
