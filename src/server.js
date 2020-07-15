@@ -93,7 +93,7 @@ app.get('/', function(req, res) {
 // });
 
 // router.get('/createAccount',function(req,res){
-//     res.sendFile(path.join(__dirname+"../src/createAC.html"))
+//     res.sendFile(path.join(__dirname+"/../src/createAC.html"))
 // });
 
 

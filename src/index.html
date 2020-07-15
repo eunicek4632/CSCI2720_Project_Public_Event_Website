@@ -11,6 +11,8 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
 </head>
 <body>
+
+  <!-- Navigation bar -->
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
     <a class="navbar-brand" href="#">Events</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -19,43 +21,43 @@
   
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
+
         <li class="nav-item active mx-3">
-          <a class="nav-link" href="/home.html"><i class="fa fa-home"> </i> Home<span class="sr-only">(current)</span></a>
+          <a class="nav-link" href="" onclick="changePage('home')" ><i class="fa fa-home"> </i> Home<span class="sr-only">(current)</span></a>
         </li>
+
         <li class="nav-item mx-3">
-          <a class="nav-link" href="" onclick="fav()"><i class="fa fa-heart"> </i> Favourites</a>
+          <a class="nav-link" href="" onclick="changePage('favourites')" ><i class="fa fa-heart"> </i> Favourites</a>
         </li>
+
         <li class="nav-item mx-3">
-          <a class="nav-link" href="">Flush</a>
+          <a class="nav-link" href="" onclick="" >Flush</a>
         </li>
+
       </ul>
+
       <p class="nav mx-3 text-light">Welcome, Username</p>
       <a class="nav-link" href="#">Log out</a>
+
     </div>
   </nav>
-      <!--Login form-->
-      <div class="p-4" id="main">
-        <form id = "input">
-            <div class = "form-group">
-                <label for = "name" >Username:</label><br>
-                <div class = "form-row">
-                    <div class = "col-4">
-                        <input class = "form-control" type = "text" id = "username" name = "username"><br>
-                    </div>
-                </div>
-            </div>
-                <div class = "form-group">
-                <label for = "subject">Password:</label><br>
-                <div class = "form-row">
-                    <div class = "col-4">
-                        <input class = "form-control" type = "password" id = "pw" name = "password"><br>
-                    </div>
-                </div>
-            </div>
-            <br>
-            <button type = "button" onclick = "verify()" id = "new">Submit</button>
-        </form>        
-      </div>
+
+  <div id="shell"></div>
+
+
 </body>
+
+<script>
+  function changePage(page){
+    if (page == 'home') {
+      $("#shell").load(path.join(__dirname + "/login.html"));
+    }
+    else if (page == 'favourites'){
+      $("#shell").load(path.join(__dirname + "/favourites.html"))
+
+    }
+    history.pushState(null, null, page);
+  }
+</script>
 
 </html>
