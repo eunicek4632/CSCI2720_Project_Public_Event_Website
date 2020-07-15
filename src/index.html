@@ -63,7 +63,7 @@
 
       success: function(response) {
 
-        history.pushState(page,null,page);
+        history.pushState(response,null,page);
         console.log('the page is loaded')
         $('#shell').html(response);
       },
@@ -81,7 +81,7 @@
   window.onpopstate = function(e){
     console.log("popped!");
     var data = e.state;
-    changePage(data);
+    $('#shell').html(data);
   }
 </script>
 
