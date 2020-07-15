@@ -48,6 +48,8 @@
 </body>
 
 <script>
+
+  // for normal navigation
   function changePage(page){
     var link;
     if (page == 'home') 
@@ -62,7 +64,7 @@
       dataType: "text",
 
       success: function(response) {
-
+        // push html file data into history
         history.pushState(response,null,page);
         console.log('the page is loaded')
         $('#shell').html(response);
@@ -78,6 +80,7 @@
     return false;
   }
 
+  // for history backward/forward
   window.onpopstate = function(e){
     console.log("popped!");
     var data = e.state;
