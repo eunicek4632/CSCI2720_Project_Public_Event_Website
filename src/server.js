@@ -46,8 +46,9 @@ var userSchema = mongoose.Schema({
     //     //}
 });
 
-
+//
 //code to create user account
+//
 var user = mongoose.model('user', userSchema);
 
 
@@ -80,7 +81,6 @@ var commentSchema = mongoose.Schema({
 });
 
 
-//code to create user account
 var comment = mongoose.model('comment', commentSchema);
 
 //app.get('/', function(req, res) {
