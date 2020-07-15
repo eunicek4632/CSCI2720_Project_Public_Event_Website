@@ -50,15 +50,21 @@
 <script>
   function changePage(page){
     $.ajax({
-      url: path.join(__dirname + "/login.html"),
+      url: "./login.html"),
       type: "GET",
       dataType: "text/html",
 
       success: function(response) {
         console.log('the page is loaded')
         $('#shell').html(response);
+      },
+      error: function(error){
+        console.log('the page was not loaded',error);
+      },
+      complete: function(xhr, status){
+        console.log("the request is completed");
       }
-    })
+    });
   }
 </script>
 
