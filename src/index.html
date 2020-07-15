@@ -51,7 +51,7 @@
   function changePage(page){
     if (page == 'home') {
       console.log("hi");
-      $("#shell").load(path.join(__dirname + "/login.html"));
+      $("#shell").load("./login.html");
     }
     else if (page == 'favourites'){
       $("#shell").load(path.join(__dirname + "/favourites.html"))
