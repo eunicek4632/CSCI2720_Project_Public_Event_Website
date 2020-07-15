@@ -94,6 +94,12 @@ app.get('/login', function(req, res) {
    
 });
 
+app.get('/home', function(req, res) {
+    console.log("hi there");
+   res.sendFile(path.join(__dirname + "/home.html"));
+   
+});
+
 app.get('/favourites', function(req, res) {
     console.log("hi there");
    res.sendFile(path.join(__dirname + "/favourites.html"));
