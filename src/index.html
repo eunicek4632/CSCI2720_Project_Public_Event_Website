@@ -50,7 +50,8 @@
 <script>
   function changePage(page){
     var link;
-    link = "/"+ page;
+    if (page == 'home') { link = "/login"};
+    if (page == 'favourites') { link = "/favourites"};
     $.ajax({
       url: link,
       type: "GET",
