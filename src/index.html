@@ -50,7 +50,7 @@
 <script>
   function changePage(page){
     $.ajax({
-      url: "src/login.html",
+      url: path.join(__dirname + "/login.html"),
       type: "GET",
       dataType: "text/html",
 
