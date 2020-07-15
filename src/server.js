@@ -88,6 +88,11 @@ app.get('/', function(req, res) {
    console.log(__dirname);
 });
 
+app.get('/login', function(req, res) {
+   res.sendFile(path.join(__dirname + "/login.html"));
+   
+});
+
 // router.get('/', function(req,res){
 //     res.sendFile(path.join(__dirname+"/../src/index.html"));
 // });
