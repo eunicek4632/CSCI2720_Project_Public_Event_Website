@@ -1,0 +1,47 @@
+Group Logistics:
+Zhuo Xuan IP        Backend Work (SPA implementation, Event and Comment Flush, Overall Struture Design and Mass Debugging)
+Hang Yee KO         Frontend Work (Web Interfaceing with Bootstrap, Data Sorting and Searching Logic, Frontend JS Interaction)
+Ching Kei CHENG     Miscellenous Stuffs (Database Schema, Login Function, Some Web App interfacing, About Project)
+
+Description:
+This web app is composed with Bootstrap as the frontend main framwork and Node.JS as the backend main framework, together with RESTFUL API and AJAX to send HTTP requests,
+Express and Body-Parser to handle post/get, Mongoose to manipulate MongoDB Database, Node-fetch to fetch event JSON and DOM to manupulate HTML contents.
+
+This web app contains several parts:
+Frontend
+-   Login.html/.js
+    User will land on this page. Inputted username and password will be post through RESTFUL API to the server and being verified though Mongoose API. Upon success, current 
+    window will be reloaded to Home.html content in SPA manner.
+-   Home.html/.js
+    This is the main page of the web app. User can see a list of events that fetch from government website by JSON parser, RESTFUL API and Mongoose API (limited to 50 events). 
+    User are able to search events (by event title, organizer or location), sort function (by event title, organizer or location) and add events to favourite, by JS functions 
+    defined in Home.js by DOM methods.
+-   Favourite.html/.js
+    This is a sub page of the web app. User can see a list of their archived favourite event with the event info listed. It basically looks alike Home, with sort and search  
+    functions exactly the same, but the events are explicitly filtered with only the favourite events of that user. User can drop specific event out of the list.
+-   Navigation Button
+    This is a generic button exists all the time. User are able to navigate to Home or Favourite, as well as flush data or logout.
+-   Flush.html/.js
+    This is a function for which the event data will be re-fetched and updates the exisiting event record in the MongoDB database by using JSON parser, RESTFUL API and Mongoose 
+    API (db update). Comments ID stored in each events will be retained if the events still exist after flushed by manipulating arrays.
+
+Backend
+-   Server
+    This file contains the declaration of required npm packages, Mongoose connection configuration, Mongo schema of user account, event and comment database, as well as a list of
+    routers and RESTFUL API methods to manipulate the data with the frontend.
+-   Script
+    This file defines the procedure of event do/undo favourite by DOM method.
+
+The structure diagram is shown as below:
+
+
+
+The schema diagram is shown as below:
+
+
+
+
+This project is developed under the regulation of Academic Honesty Practice of CUHK. We all fully understand and comply the practice.
+
+
+
