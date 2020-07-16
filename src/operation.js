@@ -44,7 +44,7 @@ router.post('/reg', function(req, res){
 	}
 });
 
-router.post('/login', function(req, res){
+router.post('/login', async(req, res)=>{
 	console.log("log in user!");
 
 	var username_input = req.body['username'];
@@ -53,7 +53,7 @@ router.post('/login', function(req, res){
 	console.log(username_input);
 	console.log(password_input);
 	try{
-		var user = User.findOne({username_input});
+		var user = await User.findOne({username_input});
 
 		if (!user) {
 			var payload = {
@@ -63,7 +63,7 @@ router.post('/login', function(req, res){
 			res.status(400).send(payload);
 		}
 
-		var isMatch = (password_input == user.password);
+		var isMatch = await (password_input == user.password);
 		console.log(user.password);
 		if (!isMatch) {
 			var payload = {
