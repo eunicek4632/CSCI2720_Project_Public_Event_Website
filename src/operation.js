@@ -50,8 +50,6 @@ router.post('/login', async(req, res)=>{
 	var username_input = req.body['username'];
 	var password_input = req.body['password'];
 
-	console.log(username_input);
-	console.log(password_input);
 	try{
 		var user = await User.findOne({username:username_input});
 
@@ -63,8 +61,11 @@ router.post('/login', async(req, res)=>{
 			res.status(400).send(payload);
 		}
 
+		console.log("from server" + user.password);
+
 		var isMatch = await (password_input == user.password);
 		console.log(user.password);
+
 		if (!isMatch) {
 			var payload = {
 				"success": 0,
