@@ -59,6 +59,12 @@
     else if (page == 'favourites')
       { link = "/favourites";}
 
+    else if (page == 'login')
+      { link = "/login";}
+
+    else if (page == 'createAC')
+      { link = "/createAC";}
+
     $.ajax({
       url: link,
       type: "GET",
