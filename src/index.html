@@ -38,7 +38,7 @@
       </ul>
 
       <p class="nav mx-3 text-light">Welcome, Username</p>
-      <a class="nav-link" href="#">Log out</a>
+      <a class="nav-link" href="#login" onclick="changePage('login')">Log in</a>
 
     </div>
   </nav>
@@ -50,7 +50,7 @@
 
 <script>
 
-  // for normal navigation
+  // for normal navigation of logged user
   function changePage(page){
     var link;
     if (page == 'home') 
