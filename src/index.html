@@ -54,17 +54,24 @@
   // for normal navigation of logged user
   function changePage(page){
     var link;
-    if (page == 'home') 
-      { link = "/home";}
+    if (sessionStorage.getItem("userID") == null) {
+      alert("You haven't logged in");
+      link = "/login";
+    }
+    else{
+      if (page == 'home') 
+        { link = "/home";}
 
-    else if (page == 'favourites')
-      { link = "/favourites";}
+      else if (page == 'favourites')
+        { link = "/favourites";}
 
-    else if (page == 'login')
-      { link = "/login";}
+      else if (page == 'login')
+        { link = "/login";}
 
-    else if (page == 'createAC')
-      { link = "/createAC";}
+      else if (page == 'createAC')
+        { link = "/createAC";}
+    }
+
 
     $.ajax({
       url: link,

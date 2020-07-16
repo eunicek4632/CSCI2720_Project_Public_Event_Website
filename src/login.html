@@ -40,12 +40,13 @@
                   success: function(response) {
 
                     var parsed_data = JSON.parse(response);
-                    
+
                     if (!parsed_data.success ) {
                       return console.log(parsed_data.message);
                     }
                     else{
                       console.log('user id is'+ parsed_data.credential);
+                      sessionStorage.setItem("userID", parsed_data.credential);
                     }
 
                     // push html file data into history
