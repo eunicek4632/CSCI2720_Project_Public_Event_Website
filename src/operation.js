@@ -35,6 +35,8 @@ router.post('/reg', function(req, res){
 
 router.post('/login', function(req, res){
 	console.log("log in user!");
+
+	
 });
 
 
