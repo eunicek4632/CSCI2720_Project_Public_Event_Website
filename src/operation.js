@@ -9,7 +9,7 @@ router.post('/reg', function(req, res){
 });
 
 router.post('/login', function(req, res){
-	console.log("create new user!");
+	console.log("log in user!");
 });
 
 
