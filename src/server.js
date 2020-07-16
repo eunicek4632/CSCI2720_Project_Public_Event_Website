@@ -51,7 +51,7 @@ var userSchema = mongoose.Schema({
 });
 
 //
-//code to create user account
+// Create user account
 //
 var user = mongoose.model('user', userSchema);
 
@@ -107,6 +107,11 @@ app.get('/home', function(req, res) {
 app.get('/favourites', function(req, res) {
     console.log("hi there");
    res.sendFile(path.join(__dirname + "/favourites.html"));
+   
+});
+
+app.get('/login.js', function(req, res) {
+   res.sendFile(path.join(__dirname + "/login.js"));
    
 });
 
