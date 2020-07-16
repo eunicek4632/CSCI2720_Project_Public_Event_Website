@@ -38,12 +38,21 @@
                   data : {username: username1, password: password1},
 
                   success: function(response) {
-                    // push html file data into history
-                    history.pushState(response,null,"/operation/login");
+                    
 
                     var parsed_data = JSON.parse(response);
+                    if (!parsed_data.success ) {
+                      return console.log(parsed_data.message);
+                    }
+                    else{
+                      console.log('the user is created with id: '+ parsed_data.inserted.userID);
+                      console.log('the user name is ' + parsed_data.inserted.username);
+                    }
                     console.log('the user is created with id: '+ response);
-                    console.log('the user name is ' + parsed_data.inserted.username);
+                   
+
+                    // push html file data into history
+                    // history.pushState(response,null,"/operation/login");
                   },
                   error: function(error){
                     console.log('the operation was not loaded',error);

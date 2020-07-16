@@ -20,7 +20,8 @@ router.post('/reg', function(req, res){
 		var user = new User ({
 			username: req.body['username'],
 			password: req.body['password'],
-			userID: id
+			userID: id,
+			favouriteEvent: []
 		});
 
 		user.save()
@@ -28,7 +29,8 @@ router.post('/reg', function(req, res){
 		var payload = {
 			"success": 1,
 			"inserted":{
-				"username" : req.body['username']
+				"username" : req.body['username'],
+				"userID" : id
 			}
 		}
 
@@ -36,12 +38,58 @@ router.post('/reg', function(req, res){
 
 	}catch(err) {
 		console.log(err.message);
-		res.status(500).send("Error in Saving");
+		var payload = {
+			"success": 0,
+			"message": "Error in Saving"
+		}
+		res.status(500).send(payload);
 	}
 });
 
 router.post('/login', function(req, res){
 	console.log("log in user!");
+
+	var username_input = req.body['username'];
+	var password_input = req.body['password'];
+
+	try{
+		var user = User.findOne({username_input});
+
+		if (!user) {
+			var payload = {
+				"success": 0,
+				"message": "User Not Exist"
+			}
+			return res.status(400).send(payload);
+		}
+
+		var isMatch = (password_input == user.password);
+
+		if (!isMatch) {
+			var payload = {
+				"success": 0,
+				"message": "Incorret Password!"
+			}
+
+			return res.status(400).send(payload);
+		}
+
+		var payload = {
+			"success": 0,
+			"credential" : user.userID
+		}
+
+		res.status(200).send(payload);
+
+
+	}catch (e){
+		console.error(e);
+		var payload = {
+			"success": 0,
+			"message": "Server Error"
+		}
+		res.status(500).send(payload);
+	}
 
 
 });
