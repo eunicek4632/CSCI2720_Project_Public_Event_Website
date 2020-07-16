@@ -25,7 +25,14 @@ router.post('/reg', function(req, res){
 
 		user.save()
 
-		res.status(201).send(user);
+		var payload = {
+			"success": 1,
+			"inserted":{
+				"username" : req.body['username']
+			}
+		}
+
+		res.status(201).send(payload);
 
 	}catch(err) {
 		console.log(err.message);
@@ -36,7 +43,7 @@ router.post('/reg', function(req, res){
 router.post('/login', function(req, res){
 	console.log("log in user!");
 
-	
+
 });
 
 
