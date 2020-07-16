@@ -8,6 +8,9 @@ router.post('/reg', function(req, res){
 	console.log("create new user!");
 });
 
+router.post('/login', function(req, res){
+	console.log("create new user!");
+});
 
 
 module.exports = router;
