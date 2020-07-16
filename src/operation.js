@@ -13,8 +13,8 @@ router.post('/reg', function(req, res){
 
 	// generate id for user
 	var id = Date.now();
-	console.log(username_input);
-	console.log(password_input);
+	console.log(req.body['username']);
+	console.log(req.body['password']);
 
 	try{
 		var user = new User ({
