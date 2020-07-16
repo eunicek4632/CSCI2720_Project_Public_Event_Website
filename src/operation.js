@@ -53,7 +53,7 @@ router.post('/login', async(req, res)=>{
 	console.log(username_input);
 	console.log(password_input);
 	try{
-		var user = await User.findOne({username_input});
+		var user = await User.findOne({username:username_input});
 
 		if (!user) {
 			var payload = {
