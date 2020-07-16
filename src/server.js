@@ -22,6 +22,12 @@ db.once('open', function() {
 });
 
 //
+// Routing
+//
+var operation = require('./operation.js')
+
+app.use('/operation',operation);
+//
 // Data schema
 //
 
@@ -49,12 +55,6 @@ var userSchema = mongoose.Schema({
     //     //contentType: String
     //     //}
 });
-
-//
-// Create user account
-//
-var user = mongoose.model('user', userSchema);
-
 
 var commentSchema = mongoose.Schema({
     commentID: {
@@ -85,27 +85,31 @@ var commentSchema = mongoose.Schema({
 });
 
 
+var user = mongoose.model('user', userSchema);
 var comment = mongoose.model('comment', commentSchema);
 
+//
+// Routing
+//
 app.get('/', function(req, res) {
    res.sendFile(path.join(__dirname + "/index.html"));
    console.log(__dirname);
 });
 
 app.get('/login', function(req, res) {
-    console.log("hi there");
+
    res.sendFile(path.join(__dirname + "/login.html"));
    
 });
 
 app.get('/home', function(req, res) {
-    console.log("hi there");
+   
    res.sendFile(path.join(__dirname + "/home.html"));
    
 });
 
 app.get('/favourites', function(req, res) {
-    console.log("hi there");
+    
    res.sendFile(path.join(__dirname + "/favourites.html"));
    
 });
@@ -115,66 +119,35 @@ app.get('/login.js', function(req, res) {
    
 });
 
+//
+// Create comment
+//
+// app.post('/insertComment', function(req, res) {
 
-app.post('/insertUser', function(req, res) {
-
-    var idMax;
-    user.findOne()
-        .sort('-userID')
-        .exec(function(err, e) {
-            if (e == null) {
-                idMax = 0;
-            } else {
-                idMax = e.userID;
-            }
-            console.log(idMax);
-            var f = new user({
-                userID: idMax + 1,
-                username: req.body['username'],
-                password: req.body['password'],
-                $push: {
-                    favoriteEvent: 0
-                }
-                //icon: {
-                //data = fs.readfileSync(req.files.userphoto.path),
-                //contentType = 'image/png'
-                //}
-            })
-            f.save(function(err) {
-                if (err)
-                    res.send(err);
-                res.send("User inserted with ID = " + f.userID);
-            });
-        });
-});
-
-
-app.post('/insertComment', function(req, res) {
-
-    var idMax;
-    user.findOne()
-        .sort('-commentID')
-        .exec(function(err, e) {
-            if (e == null) {
-                idMax = 0;
-            } else {
-                idMax = e.commentID;
-            }
-            var f = new user({
-                commentID: idMax + 1,
-                eventID: req.body['eventID'], //to be changed into history auto-fetch
-                userID: req.body['userID'], // to be changed into history auto-fetch
-                content: req.body['content'], // to be changed into history auto-fetch
-                timestamp: Date.Now,
-                like: 0
-            })
-            f.save(function(err) {
-                if (err)
-                    res.send(err);
-                res.send("Comment inserted with id=" + f.commentID);
-            });
-        });
-});
+//     var idMax;
+//     user.findOne()
+//         .sort('-commentID')
+//         .exec(function(err, e) {
+//             if (e == null) {
+//                 idMax = 0;
+//             } else {
+//                 idMax = e.commentID;
+//             }
+//             var f = new user({
+//                 commentID: idMax + 1,
+//                 eventID: req.body['eventID'], //to be changed into history auto-fetch
+//                 userID: req.body['userID'], // to be changed into history auto-fetch
+//                 content: req.body['content'], // to be changed into history auto-fetch
+//                 timestamp: Date.Now,
+//                 like: 0
+//             })
+//             f.save(function(err) {
+//                 if (err)
+//                     res.send(err);
+//                 res.send("Comment inserted with id=" + f.commentID);
+//             });
+//         });
+// });
 
 
 
