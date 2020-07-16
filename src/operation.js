@@ -30,7 +30,8 @@ router.post('/reg', function(req, res){
 			"success": 1,
 			"inserted":{
 				"username" : req.body['username'],
-				"userID" : id
+				"userID" : id,
+				"password": req.body['password']
 			}
 		}
 

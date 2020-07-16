@@ -119,10 +119,6 @@ app.get('/favourites', function(req, res) {
    
 });
 
-app.get('/login.js', function(req, res) {
-   res.sendFile(path.join(__dirname + "/login.js"));
-   
-});
 
 //
 // Create comment
