@@ -6,6 +6,7 @@ const bcrypt = require("bcryptjs")
 //
 router.post('/reg', function(req, res){
 	console.log("create new user!");
+	
 });
 
 router.post('/login', function(req, res){
