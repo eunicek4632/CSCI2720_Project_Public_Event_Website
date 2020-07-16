@@ -1,4 +1,5 @@
 <html>
+
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
@@ -12,6 +13,7 @@
     <!--icons-->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
 </head>
+
 <body>
 
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
@@ -19,40 +21,43 @@
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
-      
+
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav mr-auto">
-            <li class="nav-item active mx-3">
-              <a class="nav-link" href="/home.html"><i class="fa fa-home"> </i> Home<span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item mx-3">
-              <a class="nav-link" href="" onclick="fav()"><i class="fa fa-heart"> </i> Favourites</a>
-            </li>
-            <li class="nav-item mx-3">
-              <a class="nav-link" href="">Flush</a>
-            </li>
-          </ul>
-          <div class="nav-item dropdown mx-3">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active mx-3">
+                    <a class="nav-link" href="/home.html"><i class="fa fa-home"> </i> Home<span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item mx-3">
+                    <a class="nav-link" href="" onclick="fav()"><i class="fa fa-heart"> </i> Favourites</a>
+                </li>
+                <li class="nav-item mx-3">
+                    <a class="nav-link" href="">Flush</a>
+                </li>
+                <li class="nav-item mx-3">
+                    <a class="nav-link" href="About.html">About</a>
+                </li>
+            </ul>
+            <div class="nav-item dropdown mx-3">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               Sort By
             </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="#">Event ID</a>
-              <a class="dropdown-item" href="#">Location ID</a>
-              <a class="dropdown-item" href="#">Number of Favourites</a>
-              <!--<div class="dropdown-divider"></div>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="#">Event ID</a>
+                    <a class="dropdown-item" href="#">Location ID</a>
+                    <a class="dropdown-item" href="#">Number of Favourites</a>
+                    <!--<div class="dropdown-divider"></div>
               <a class="dropdown-item" href="#">Something else here</a>-->
+                </div>
             </div>
+            <form class="form-inline my-2 my-lg-0">
+                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            </form>
+            <a class="nav-link" href="#">Log out</a>
         </div>
-          <form class="form-inline my-2 my-lg-0">
-            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-          </form>
-          <a class="nav-link" href="#">Log out</a>
-        </div>
-      </nav>
-      <!--Login form-->
-      <div class="jumbotron">
+    </nav>
+    <!--Login form-->
+    <div class="jumbotron">
         <h3 class="display-4" id="summary">Event Summary</h3>
         <h4><span class="badge badge-pill badge-info" id="e_id"> Event ID</span></h4>
         <br>
@@ -76,7 +81,7 @@
         <hr class="my-4">
 
         <h3>Comments</h3>
-        
+
         <p class="lead">
             <ul id="list">
                 <li class="media">
@@ -84,8 +89,8 @@
                       <circle cx="50" cy="50" r="40" fill="blue">
                     </circle></svg>
                     <div class="media-body">
-                      <h5>Name</h5>
-                      <p>All comments will be displayed here</p><br>
+                        <h5>Name</h5>
+                        <p>All comments will be displayed here</p><br>
                     </div>
                 </li>
             </ul>
@@ -97,17 +102,17 @@
                 </circle></svg>
                 <div class="media-body">
                     <h5>Name</h5>
-                    <div class = "form-group">
-                        <label for = "comment" >Comment:</label><br>
-                        <div class = "col-5 form-row">
-                            <textarea class = "form-control" id = "comment" rows = "3" cols = "30" name = "comment"></textarea><br>
+                    <div class="form-group">
+                        <label for="comment">Comment:</label><br>
+                        <div class="col-5 form-row">
+                            <textarea class="form-control" id="comment" rows="3" cols="30" name="comment"></textarea><br>
                             <button class="btn btn-primary btn-sm" href="#" role="button" id="post">Post</button>
                         </div>
                     </div>
                 </div>
             </div>
         </p>
-      </div>
+    </div>
 </body>
 
 </html>
