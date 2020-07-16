@@ -8,33 +8,18 @@ app.use(bodyParser.urlencoded({
 }))
 
 var mongoose = require('mongoose');
-// mongoose.connect('mongodb://zxip5:x35197@localhost/zxip5');
+mongoose.connect('mongodb://zxip5:x35197@localhost/zxip5');
 
-// //listen to port x
-// var server = app.listen(2003);
+//listen to port x
+var server = app.listen(2003);
 
-// var db = mongoose.connection;
-// //upon connection failure
-// db.on('error', console.error.bind(console, 'Connection error'));
-// //upon opening database successfully
-// db.once('open', function() {
-//     console.log("Connected succesfully");
-// });
-const MONGOURI = "mongodb://zxip5:x35197@localhost/zxip5";
-
-const InitiateMongoServer = async () => {
-  try {
-    await mongoose.connect(MONGOURI, {
-      useNewUrlParser: true
-    });
-    console.log("Connected to DB !!");
-  } catch (e) {
-    console.log(e);
-    throw e;
-  }
-};
-
-InitiateMongoServer();
+var db = mongoose.connection;
+//upon connection failure
+db.on('error', console.error.bind(console, 'Connection error'));
+//upon opening database successfully
+db.once('open', function() {
+    console.log("Connected succesfully");
+});
 
 //
 // Routing
