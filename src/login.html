@@ -47,10 +47,10 @@
                     else{
                       console.log('user id is'+ parsed_data.credential);
                       sessionStorage.setItem("userID", parsed_data.credential);
+                      changePage('home');
                     }
 
-                    // push html file data into history
-                    // history.pushState(response,null,"/operation/login");
+                    
                     
 
                   },
