@@ -10,11 +10,8 @@ const User = require("./model/User");
 router.post('/reg', function(req, res){
 	console.log("create new user!");
 
-
 	// generate id for user
 	var id = Date.now();
-	console.log(req.body['username']);
-	console.log(req.body['password']);
 
 	try{
 		var user = new User ({
