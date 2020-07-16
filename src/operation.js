@@ -66,6 +66,7 @@ router.post('/login', async(req, res)=>{
 		var isMatch = await (password_input == user.password);
 		console.log("debug" + user.password);
 
+		console.log(isMatch);
 		if (!isMatch) {
 			var payload = {
 				"success": 0,
@@ -76,7 +77,7 @@ router.post('/login', async(req, res)=>{
 		}
 
 		var payload = {
-			"success": 0,
+			"success": 1,
 			"credential" : user.userID
 		}
 
