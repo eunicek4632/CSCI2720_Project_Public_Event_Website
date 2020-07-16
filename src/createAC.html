@@ -1,9 +1,55 @@
+  <!--Register form-->
+  <div class="p-4" id="main">
+    <form id = "input">
+        <div class = "form-group">
+            <label for = "name" >Username:</label><br>
+            <div class = "form-row">
+                <div class = "col-4">
+                    <input class = "form-control" type = "text" id = "username" name = "username"><br>
+                </div>
+            </div>
+        </div>
+            <div class = "form-group">
+            <label for = "subject">Password:</label><br>
+            <div class = "form-row">
+                <div class = "col-4">
+                    <input class = "form-control" type = "password" id = "pw" name = "password"><br>
+                </div>
+            </div>
+        </div>
+        <br>
+        <button type = "button" onclick = "verify()" id = "new">Submit</button>
+    </form>        
+  </div>
 
-<form action="http://csci2720-g19.cse.cuhk.edu.hk/operation/reg" method="post">
-    <br> Username:
-    <input type="text" name="username">
-    <br> Password:
-    <input type="password" name="password">
-    <br>
-    <input type="submit" value="Submit">
-</form>
+
+<script>    
+    function verify() {
+        var username1 = document.getElementById("username").value;
+        var password1 = document.getElementById("pw").value;
+        if (username1 == '' || password1 == '')
+            alert("You cannot leave any of the fields empty");
+        else {
+                
+                $.ajax({
+                  url: "/operation/reg",
+                  type: "POST",
+                  // dataType: "text",
+
+                  success: function(response) {
+                    // push html file data into history
+                    history.pushState(response,null,"/operation/login");
+                    console.log('the page is loaded'+ response)
+                  },
+                  error: function(error){
+                    console.log('the operation was not loaded',error);
+                  },
+                  complete: function(xhr, status){
+                    console.log("the request is completed");
+                  }
+                });
+
+
+        }
+    }
+</script>
