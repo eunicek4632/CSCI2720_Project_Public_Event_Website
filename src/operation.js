@@ -11,12 +11,13 @@ router.post('/reg', function(req, res){
 	console.log("create new user!");
 
 	// get data
-	const { username,password } = req.body;
+	var username_input = req.body['username'];
+	var password_input = req.body['password'];
 
 	// generate id for user
 	console.log(Date.now());
-	console.log(username);
-	console.log(password);
+	console.log(username_input);
+	console.log(password_input);
 
 	try{
 		var user = new User ({
