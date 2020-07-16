@@ -4,9 +4,9 @@ const bcrypt = require("bcryptjs")
 //
 // Create user
 //
-router.post('/reg', function(req, res) => {
+router.post('/reg', function(req, res){
 	console.log("create new user!");
-}
+});
 
 
 
