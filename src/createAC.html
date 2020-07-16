@@ -41,8 +41,9 @@
                     // push html file data into history
                     history.pushState(response,null,"/operation/login");
 
-                    console.log('the user is created with id: '+ response)
-                    console.log('the user name is ' + response.inserted.username);
+                    var parsed_data = JSON.parse(response);
+                    console.log('the user is created with id: '+ response);
+                    console.log('the user name is ' + parsed_data.inserted.username);
                   },
                   error: function(error){
                     console.log('the operation was not loaded',error);
