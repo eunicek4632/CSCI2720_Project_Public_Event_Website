@@ -19,9 +19,9 @@ router.post('/reg', function(req, res){
 	console.log(password);
 
 	try{
-		var user = new User{
+		var user = new User ({
 
-		}
+		});
 
 	}catch(err) {
 
