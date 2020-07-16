@@ -64,9 +64,7 @@ router.post('/login', async(req, res)=>{
 		console.log("from server" + user.password);
 
 		var isMatch = await (password_input == user.password);
-		console.log("debug" + user.password);
-
-		console.log(isMatch);
+		
 		if (!isMatch) {
 			var payload = {
 				"success": 0,
