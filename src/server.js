@@ -84,20 +84,26 @@ var commentSchema = mongoose.Schema({
 var comment = mongoose.model('comment', commentSchema);
 
 app.get('/', function(req, res) {
-   res.sendFile(path.join(__dirname + "/index.html"));
-   console.log(__dirname);
+    res.sendFile(path.join(__dirname + "/index.html"));
+    console.log(__dirname);
 });
 
 app.get('/login', function(req, res) {
     console.log("hi there");
-   res.sendFile(path.join(__dirname + "/login.html"));
-   
+    res.sendFile(path.join(__dirname + "/login.html"));
+
 });
 
 app.get('/favourites', function(req, res) {
     console.log("hi there");
-   res.sendFile(path.join(__dirname + "/favourites.html"));
-   
+    res.sendFile(path.join(__dirname + "/favourites.html"));
+
+});
+
+app.get('/about', function(req, res) {
+    console.log("hi there");
+    res.sendFile(path.join(__dirname + "/about.html"));
+
 });
 
 // router.get('/', function(req,res){
