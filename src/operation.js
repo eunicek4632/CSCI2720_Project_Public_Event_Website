@@ -21,7 +21,7 @@ router.post('/reg', function(req, res){
 
 	try{
 		var user = new User ({
-
+			
 		});
 
 	}catch(err) {

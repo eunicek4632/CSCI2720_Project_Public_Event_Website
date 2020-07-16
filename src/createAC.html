@@ -34,8 +34,8 @@
                 $.ajax({
                   url: "/operation/reg",
                   type: "POST",
-                  // dataType: "text",
-
+                  dataType: "text",
+                  data : {username: username1, password: password1},
                   success: function(response) {
                     // push html file data into history
                     history.pushState(response,null,"/operation/login");
