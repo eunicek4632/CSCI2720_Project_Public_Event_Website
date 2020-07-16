@@ -39,7 +39,7 @@
                   success: function(response) {
                     // push html file data into history
                     history.pushState(response,null,"/operation/login");
-                    console.log('the page is loaded'+ response)
+                    console.log('the user is created with id: '+ response)
                   },
                   error: function(error){
                     console.log('the operation was not loaded',error);

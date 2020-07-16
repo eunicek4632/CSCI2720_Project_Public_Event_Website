@@ -10,29 +10,31 @@ const User = require("./model/User");
 router.post('/reg', function(req, res){
 	console.log("create new user!");
 
-	// get data
-	var username_input = req.body['username'];
-	var password_input = req.body['password'];
 
 	// generate id for user
-	console.log(Date.now());
+	var id = Date.now();
 	console.log(username_input);
 	console.log(password_input);
 
 	try{
 		var user = new User ({
-			
+			username: req.body['username'],
+			password: req.body['password'],
+			userID: id
 		});
 
-	}catch(err) {
+		user.save()
 
+		res.status(201).send(user);
+
+	}catch(err) {
+		console.log(err.message);
+		res.status(500).send("Error in Saving");
 	}
 });
 
 router.post('/login', function(req, res){
 	console.log("log in user!");
-	console.log(err.message);
-	res.status(500).send("Error in Saving");
 });
 
 
