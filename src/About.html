@@ -56,59 +56,119 @@
     <!--Login form-->
     <div class="jumbotron">
         <h3 class="display-4" id="summary">About This Project</h3>
-        <h4><span class="badge badge-pill badge-info" id="e_id"> Event ID</span></h4>
         <br>
 
         <h3>
-            <svg width="1em" height="0.8em" viewBox="0 0 16 16" class="bi bi-calendar" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                <path fill-rule="evenodd" d="M1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1zm1-3a2 2 0 0 0-2 2v11a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V3a2 2 0 0 0-2-2H2z"/>
-                <path fill-rule="evenodd" d="M3.5 0a.5.5 0 0 1 .5.5V1a.5.5 0 0 1-1 0V.5a.5.5 0 0 1 .5-.5zm9 0a.5.5 0 0 1 .5.5V1a.5.5 0 0 1-1 0V.5a.5.5 0 0 1 .5-.5z"/>
-            </svg>
-            <span class="text-muted" id="date">Date</span>
+            <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-people" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd" d="M15 14s1 0 1-1-1-4-5-4-5 3-5 4 1 1 1 1h8zm-7.995-.944v-.002.002zM7.022 13h7.956a.274.274 0 0 0 .014-.002l.008-.002c-.002-.264-.167-1.03-.76-1.72C13.688 10.629 12.718 10 11 10c-1.717 0-2.687.63-3.24 1.276-.593.69-.759 1.457-.76 1.72a1.05 1.05 0 0 0 .022.004zm7.973.056v-.002.002zM11 7a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm3-2a3 3 0 1 1-6 0 3 3 0 0 1 6 0zM6.936 9.28a5.88 5.88 0 0 0-1.23-.247A7.35 7.35 0 0 0 5 9c-4 0-5 3-5 4 0 .667.333 1 1 1h4.216A2.238 2.238 0 0 1 5 13c0-1.01.377-2.042 1.09-2.904.243-.294.526-.569.846-.816zM4.92 10c-1.668.02-2.615.64-3.16 1.276C1.163 11.97 1 12.739 1 13h3c0-1.045.323-2.086.92-3zM1.5 5.5a3 3 0 1 1 6 0 3 3 0 0 1-6 0zm3-2a2 2 0 1 0 0 4 2 2 0 0 0 0-4z"/>
+          </svg>
+            <span class="text-muted" id="logistics">Group Logistics</span>
         </h3>
-        <br>
         <div class="lead">
-            <h5 class="badge badge-secondary">Description</h5>
-            <p class="lead" id="desc">Event Description</p>
+            <div class="row">
+                <div class="col-sm-2">
+                    <h5 class="badge badge-secondary">Member Name</h5>
+                    <br>
+                    <p class="lead" id="adams">Zhuo Xuan Ip</p>
+                    <br>
+                    <br>
+                    <p class="lead" id="desc">Hang Yee KO</p>
+                    <br>
+                    <br>
+                    <p class="lead" id="desc">Ching Kei CHENG</p>
+                </div>
+                <div class="col-sm-5">
+                    <h5 class="badge badge-secondary">Workload</h5>
+                    <br>
+                    <p class="lead" id="adams">Backend Work (SPA implementation, Event and Comment Flush, Overall Struture Design and Mass Debugging)</p>
+                    <br>
+                    <p class="lead" id="desc">Frontend Work (Web Interfaceing with Bootstrap, Data Sorting and Searching Logic, Frontend JS Interaction)</p>
+                    <br>
+                    <p class="lead" id="desc">Miscellenous Stuffs (Database Schema, Login Function, Some Web App interfacing, About Project)</p>
+                </div>
+            </div>
         </div>
-        <h5>
-            <object height="20em" data="link.svg" type="image/svg+xml"></object>
-            <a id="ics">ICS of Event</a>
-        </h5>
+
+
         <hr class="my-4">
 
-        <h3>Comments</h3>
+        <h3>Description</h3>
 
         <p class="lead">
-            <ul id="list">
-                <li class="media">
-                    <svg height="100" width="100">
-                      <circle cx="50" cy="50" r="40" fill="blue">
-                    </circle></svg>
-                    <div class="media-body">
-                        <h5>Name</h5>
-                        <p>All comments will be displayed here</p><br>
-                    </div>
-                </li>
-            </ul>
-            <hr>
-            <h4>Add Comment</h4>
-            <div class="media">
-                <svg height="100" width="100">
-                  <circle cx="50" cy="50" r="40" fill="green">
-                </circle></svg>
-                <div class="media-body">
-                    <h5>Name</h5>
-                    <div class="form-group">
-                        <label for="comment">Comment:</label><br>
-                        <div class="col-5 form-row">
-                            <textarea class="form-control" id="comment" rows="3" cols="30" name="comment"></textarea><br>
-                            <button class="btn btn-primary btn-sm" href="#" role="button" id="post">Post</button>
-                        </div>
-                    </div>
+            <div class="row">
+                <div class="col-sm-9">
+                    <p>This web app is composed with Bootstrap as the frontend main framwork and Node.JS as the backend main framework, together with RESTFUL API and AJAX to send HTTP requests, Express and Body-Parser to handle post/get, Mongoose to manipulate
+                        MongoDB Database,Node-fetch to fetch event JSON and DOM to manupulate HTML contents.</p>
                 </div>
             </div>
         </p>
+        <div>
+            <div class="row">
+                <div class="col-sm-9">
+                    <span class="text-muted" id="frontend"><h5>Frontend</h5>
+                      </span>
+                    <div class="card">
+                        <div class="card-header">Login.html/js</div>
+                        <div class="card-body">User will land on this page. Inputted username and password will be post through RESTFUL API to the server and being verified though Mongoose API. Upon success, current window will be reloaded to Home.html content in SPA manner.</div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header">Home.html/.js</div>
+                        <div class="card-body">This is the main page of the web app. User can see a list of events that fetch from government website by JSON parser, RESTFUL API and Mongoose API (limited to 50 events). User are able to search events (by event title, organizer
+                            or location), sort function (by event title, organizer or location) and add events to favourite, by JS functions defined in Home.js by DOM methods.</div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header">Favourite.html/.js</div>
+                        <div class="card-body">This is a sub page of the web app. User can see a list of their archived favourite event with the event info listed. It basically looks alike Home, with sort and search functions exactly the same, but the events are explicitly
+                            filtered with only the favourite events of that user. User can drop specific event out of the list.</div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header">Navigation Button</div>
+                        <div class="card-body">This is a generic button exists all the time. User are able to navigate to Home or Favourite, as well as flush data or logout.</div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header">Flush.html/.js</div>
+                        <div class="card-body">This is a function for which the event data will be re-fetched and updates the exisiting event record in the MongoDB database by using JSON parser, RESTFUL API and Mongoose API (db update). Comments ID stored in each events will
+                            be retained if the events still exist after flushed by manipulating arrays.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br>
+
+        <div class="row">
+            <div class="col-sm-9">
+                <span class="text-muted" id="backend"><h5>Backend</h5></span>
+                <div class="card">
+                    <div class="card-header">Server.js</div>
+                    <div class="card-body">This file contains the declaration of required npm packages, Mongoose connection configuration, Mongo schema of user account, event and comment database, as well as a list of routers and RESTFUL API methods to manipulate the data with
+                        the frontend.
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header">Script.js</div>
+                    <div class="card-body">This file defines the procedure of event do/undo favourite by DOM method.</div>
+                </div>
+            </div>
+        </div>
+
+        <br>
+        <hr class="my-4">
+        <h3>Diagrams</h3>
+
+        <br>
+        <span class="text-muted" id="structure"><h5>Structure Diagram</h5></span>
+        <img src="./img/structure.jpg" alt="structure">
+
+        <br><br>
+        <span class="text-muted" id="schema"><h5>Schema Diagram</h5></span>
+        <img src="./img/schema.jpg" alt="schema">
+        </p>
+
+        <br>
+        <hr class="my-4">
+        <h3>Readme</h3>
+        <a href="About.txt">Readme TXT</a>
+
     </div>
 </body>
 

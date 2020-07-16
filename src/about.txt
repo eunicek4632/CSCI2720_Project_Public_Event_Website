@@ -26,10 +26,10 @@ Frontend
     API (db update). Comments ID stored in each events will be retained if the events still exist after flushed by manipulating arrays.
 
 Backend
--   Server
+-   Server.js
     This file contains the declaration of required npm packages, Mongoose connection configuration, Mongo schema of user account, event and comment database, as well as a list of
     routers and RESTFUL API methods to manipulate the data with the frontend.
--   Script
+-   Script.js
     This file defines the procedure of event do/undo favourite by DOM method.
 
 The structure diagram is shown as below:
