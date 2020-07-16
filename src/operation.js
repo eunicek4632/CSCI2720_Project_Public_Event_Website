@@ -64,7 +64,7 @@ router.post('/login', function(req, res){
 		}
 
 		var isMatch = (password_input == user.password);
-
+		console.log(user.password);
 		if (!isMatch) {
 			var payload = {
 				"success": 0,
