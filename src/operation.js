@@ -54,12 +54,12 @@ router.post('/login', async(req, res)=>{
 		var user = await User.findOne({username:username_input});
 
 		if (!user) {
-			// var payload = {
-			// 	"success": 0,
-			// 	"message": "User Not Exist"
-			// }
-			// return res.status(400).send(payload);
-			return res.status(400).send('User not found!');
+			var payload = {
+				"success": 0,
+				"message": "User Not Exist"
+			}
+			return res.status(400).send(payload);
+			// return res.status(400).send('User not found!');
 		}
 
 		console.log("from server" + user.password);
