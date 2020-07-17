@@ -56,7 +56,7 @@
                   },
                   error: function(error){
                     
-                    // var parsed_data = JSON.parse(error);
+                    var parsed_data = JSON.parse(error);
                     console.log('the operation was not loaded' + error.message);
                   },
                   complete: function(xhr, status){
