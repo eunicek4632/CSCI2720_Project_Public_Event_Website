@@ -1,4 +1,4 @@
-  <!--Login form-->
+  <!--Register form-->
   <div class="p-4" id="main">
     <form id = "input">
         <div class = "form-group">
@@ -32,27 +32,27 @@
         else {
                 
                 $.ajax({
-                  url: "/operation/login",
+                  url: "/operation/reg",
                   type: "POST",
                   dataType: "text",
                   data : {username: username1, password: password1},
 
                   success: function(response) {
+                    
 
                     var parsed_data = JSON.parse(response);
-
                     if (!parsed_data.success ) {
                       return console.log(parsed_data.message);
                     }
                     else{
-                      console.log('user id is'+ parsed_data.credential);
-                      sessionStorage.setItem("userID", parsed_data.credential);
-                      changePage('home');
+                      console.log('the user is created with id: '+ parsed_data.inserted.userID);
+                      console.log('the user name is ' + parsed_data.inserted.username);
+                      console.log('the password is ' + parsed_data.inserted.password);
                     }
+                   
 
-                    
-                    
-
+                    // push html file data into history
+                    // history.pushState(response,null,"/operation/login");
                   },
                   error: function(error){
                     console.log('the operation was not loaded',error);

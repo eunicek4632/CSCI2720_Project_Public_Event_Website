@@ -50,10 +50,6 @@ function fav(){
     });
 }
 */
-function show(){
-    alert(history.length);
-}
-
 
 
 //data verification http request

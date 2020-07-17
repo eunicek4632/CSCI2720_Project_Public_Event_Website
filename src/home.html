@@ -1,0 +1,58 @@
+
+<div class="container">
+    <div class="media">
+      <div class="dropdown mx-3">
+        <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Search Criteria<span class="caret"></span></button>
+        <ul class="dropdown-menu">
+          <li id="event" onclick="search('Event')"><a>Event</a></li>
+          <li id="loc" onclick="search('Location')"><a>Location</a></li>
+          <li id="org" onclick="search('Organizer')"><a>Organizer</a></li>
+          <!--<li><a href="#">Number of Favourites</a></li>-->
+        </ul>
+      </div>
+      <div class="media-body">
+        <form class="form-inline my-2 my-lg-0">
+          <!--Criteria Display-->
+          <input class="form-control mr-sm-2 mx-2" type="text" id="show" value="Event" disabled>
+          <!--Search Bar-->
+          <input class="form-control mr-sm-2" id="input" type="search" placeholder="Search" aria-label="Search" onkeyup="menu()">
+          
+          <!--Execute Searc(function duplicated)-->
+          <button type="button" class="btn btn-info" onclick="menu()">
+            <span class="glyphicon glyphicon-search"></span> Search
+          </button>
+          <button type="button" class="btn btn-primary mx-2" onclick="menu()">
+            <span class="glyphicon glyphicon-search"></span> Add Event
+          </button>
+        </form>
+      </div>
+      <!--
+      <div class="dropdown-menu media-body" aria-labelledby="navbarDropdown">
+        <a class="dropdown-item" href="#">Event ID</a>
+        <a class="dropdown-item" href="#">Location ID</a>
+        <a class="dropdown-item" href="#">Number of Favourites</a>
+        <div class="dropdown-divider"></div>
+        <a class="dropdown-item" href="#">Something else here</a> 
+      </div>-->
+    </div>
+  
+    <!--Start of the table-->
+    <br>
+    <div>
+      <table class="table table-sm" id="table">
+        <thead>
+          <tr>
+            <th class="p-3" scope="col" onclick="sortTable(0)">Events</th>
+            <th class="p-3" scope="col" onclick="sortTable(1)">Location</th>
+            <th class="p-3" scope="col" onclick="sortTable(2)">Organizer</th>
+            <th class="p-4" scope="col">Add to Favourites</th>
+            <th class="p-3" scope="col">Delete</th>
+          </tr>
+        </thead>
+        <tbody id="evts">
+
+        </tbody>
+      </table>
+      <h3 id="na" style="display:none;">No results found</h3>
+    </div>
+</div>
