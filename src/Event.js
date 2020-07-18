@@ -1,3 +1,5 @@
+// <!-- please change to other file name to avoid cofusion btw model/Event.js -->
+
 //need to get user info for displaying name and icon
 //how to save and retrieve comments, txt, json, database?
 var name = "Name";

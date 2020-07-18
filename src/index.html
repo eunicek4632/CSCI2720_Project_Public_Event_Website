@@ -32,7 +32,7 @@
         </li>
 
         <li class="nav-item mx-3">
-          <a class="nav-link" href="javascript:void(0);" onclick="" >Flush</a>
+          <a class="nav-link" href="javascript:void(0);" onclick="flush()" >Flush</a>
         </li>
 
       </ul>
@@ -51,6 +51,7 @@
 <script>  
 
   console.log(sessionStorage.getItem("userID"));
+
   // for normal navigation of logged user
   function changePage(page){
     var link;
@@ -93,6 +94,24 @@
     });
 
     return false;
+  }
+
+
+  function flush(){
+    $.ajax({
+      url: "/operation/flush",
+      type: "GET",
+      success: function(response) {
+        console.log('success!!!!');
+        console.log(response);
+      },
+      error: function(error){
+        console.log('the flush was not loaded',error);
+      },
+      complete: function(xhr, status){
+        console.log("the flush is completed");
+      }
+    });
   }
 
   // for history backward/forward
