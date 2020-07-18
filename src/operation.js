@@ -106,6 +106,12 @@ router.post('/login', async(req, res)=>{
 // Flush
 //
 router.get('/flush', function(req,res){
+	console.log('now drop old set of data');
+
+	mongoose.connection.collections['events'].drop(function(err){
+		console.log('collection dropped');
+	})
+	
 	console.log('now start flush');
 
 	let url = "https://ogcef.one.gov.hk/event-api/eventList.json";
