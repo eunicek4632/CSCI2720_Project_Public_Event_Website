@@ -113,17 +113,18 @@ router.get('/getEvent', function(req, res) {
                         "success": 0,
                         "message": "No event to fetch"
                     }
-                    res.status(211).send(json(payload));
+                    res.status(211).send(payload);
                 }
 
-                console.log(events);
+                //console.log(events);
 
                 var payload = {
                     "success": 1,
-                    "event": events
+                    "message": "get event success",
+                    "event": events[0]
                 }
 
-                res.status(200).send(json(payload));
+                res.status(200).send(payload);
             });
 
 
@@ -135,7 +136,7 @@ router.get('/getEvent', function(req, res) {
             "success": 0,
             "message": "Server Error"
         }
-        res.status(500).send(json(payload));
+        res.status(500).send(payload);
     }
 
 });
