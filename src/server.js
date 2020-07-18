@@ -8,10 +8,10 @@ app.use(bodyParser.urlencoded({
 }))
 
 var mongoose = require('mongoose');
-mongoose.connect('mongodb://zxip5:x35197@localhost/zxip5');
+mongoose.connect('mongodb://thcheng6:x79714@localhost/thcheng6');
 
 //listen to port x
-var server = app.listen(2003);
+var server = app.listen(2019);
 
 var db = mongoose.connection;
 //upon connection failure
@@ -26,7 +26,7 @@ db.once('open', function() {
 //
 var operation = require('./operation.js')
 
-app.use('/operation',operation);
+app.use('/operation', operation);
 //
 // Data schema
 //
@@ -64,31 +64,31 @@ var comment = mongoose.model('comment', commentSchema);
 // Routing
 //
 app.get('/', function(req, res) {
-   res.sendFile(path.join(__dirname + "/index.html"));
-   console.log(__dirname);
+    res.sendFile(path.join(__dirname + "/index.html"));
+    console.log(__dirname);
 });
 
 app.get('/login', function(req, res) {
 
-   res.sendFile(path.join(__dirname + "/login.html"));
-   
+    res.sendFile(path.join(__dirname + "/login.html"));
+
 });
 
 app.get('/createAC', function(req, res) {
 
-   res.sendFile(path.join(__dirname + "/createAC.html"));
-   
+    res.sendFile(path.join(__dirname + "/createAC.html"));
+
 });
 app.get('/home', function(req, res) {
-   
-   res.sendFile(path.join(__dirname + "/home.html"));
-   
+
+    res.sendFile(path.join(__dirname + "/home.html"));
+
 });
 
 app.get('/favourites', function(req, res) {
-    
-   res.sendFile(path.join(__dirname + "/favourites.html"));
-   
+
+    res.sendFile(path.join(__dirname + "/favourites.html"));
+
 });
 
 
