@@ -60,9 +60,7 @@
 
                   },
                   error: function(error){
-                    
-                    // var parsed_data = JSON.parse(error);
-                    console.log('the operation was not loaded' + error);
+                    console.log('the operation was not loaded',error);
                   },
                   complete: function(xhr, status){
                     console.log("the request is completed");
@@ -76,6 +74,9 @@
     function log_out(){
       //note: need to save data of user before log out
       sessionStorage.removeItem("userID");
+      console.log("log out!");
+      document.getElementById("log_user").innerHTML = "";
+      document.getElementById("log_btn").setAttribute("onclick",verify());
       changePage("login");
     }
 </script>
