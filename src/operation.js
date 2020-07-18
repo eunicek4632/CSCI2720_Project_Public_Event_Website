@@ -106,26 +106,22 @@ router.post('/login', async(req, res)=>{
 router.get('/flush', function(req,res){
 	console.log('now start flush');
 
-	const url = "https://ogcef.one.gov.hk/event-api/eventList.json";
+	let url = "https://ogcef.one.gov.hk/event-api/eventList.json";
+	let settings = {method: "get"};
 
-	const fetchJSON = async url =>{
-		try{
-			const response = await fetch(url);
-			const json = await response.json();
+	fetch(url,settings).then(res => res.json()).then((json) =>{
+		// parse the data 
+            var replacer = function(key, value) {
+                return typeof value === 'undefined' ? null : value;
+            }
+            var jsonParsed = JSON.parse(JSON.stringify(json, replacer));
 
-			var replacer = function(key,value) {
-				return typeof value === 'undefined' ? null : value;
-			}
+            console.log(jsonParsed[0].event_id + " - " + jsonParsed[0].event_summary);
 
-			var jsonParsed = JSON.parse(JSON.stringify(json,replacer));
 
-			for (var i = 0; i < 3; i++) {
-				console.log('eventID:' + jsonParsed[i].event_id + 'eventSummary:' + jsonParsed[i].event_summary +'\n');
-			}
-		} catch{
-			console.log(error);
-		}
-	}
+        
+	});
+
 });
 
 
