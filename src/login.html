@@ -143,8 +143,8 @@
 
             success: function(response) {
 
-                //var parsed_data = JSON.parse(response);
-                var parsed_data = response;
+                var parsed_data = JSON.parse(response);
+                //var parsed_data = response;
                 savedResponse = parsed_data;
 
                 if (!parsed_data.success) {
@@ -152,6 +152,8 @@
                 } else {
 
                     console.log(parsed_data.event);
+
+                    //parsed_data = JSON.parse(response)
 
                     //parsed_data.map((e, index) => {
                     //id is a number
