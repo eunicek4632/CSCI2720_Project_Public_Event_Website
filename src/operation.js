@@ -121,21 +121,27 @@ router.get('/flush', function(req,res){
             console.log("ID" + jsonParsed[0].event_id + " - Summary:" + jsonParsed[0].event_summary + "- Date:" + jsonParsed[0].event_date + "- Organizer:" + jsonParsed[0].event_org + "- Location:" + jsonParsed[0].event_location + "- ICS:" + jsonParsed[0].event_ics + "\n");
 
             try{
-            	var event = new Event({
-            		eventID: jsonParsed[0].event_id,
-            		eventSummary: jsonParsed[0].event_summary,
-            		eventDate: jsonParsed[0].event_date,
-            		eventOrganizer: jsonParsed[0].event_org,
-            		eventLocation: jsonParsed[0].event_location,
-            		eventICS: jsonParsed[0].event_ics
-            	});
+            	for (var i = 0; i < 50; i++) {
+            		var event = new Event({
+            			eventID: jsonParsed[i].event_id,
+            			eventSummary: jsonParsed[i].event_summary,
+            			eventDate: jsonParsed[i].event_date,
+            			eventOrganizer: jsonParsed[i].event_org,
+            			eventLocation: jsonParsed[i].event_location,
+            			eventICS: jsonParsed[i].event_ics
+            		});
 
-            	event.save();
+            		event.save();
+            	}
+
+
+            	var payload = 
+            	res.status(200).
             }catch(err){
             	console.log(err.message);
             	var payload = {
-            		"success": 0,
-            		"message": "Error in flushing"
+            		"success": 1,
+            		"message": "Event is saved"
             	}
             	res.status(500);
             }
