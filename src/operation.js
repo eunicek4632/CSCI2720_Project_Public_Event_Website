@@ -121,7 +121,7 @@ router.get('/getEvent', function(req, res) {
                 var payload = {
                     "success": 1,
                     "message": "get event success",
-                    "event": events[0]
+                    "event": events
                 }
 
                 res.status(200).send(payload);
