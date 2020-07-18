@@ -8,7 +8,7 @@ app.use(bodyParser.urlencoded({
 }))
 
 var mongoose = require('mongoose');
-mongoose.connect('mongodb://zxip5:x35197@localhost/zxip5');
+mongoose.connect('mongodb://hyko9:x82718@localhost/hyko9');
 
 //listen to port x
 var server = app.listen(2010);
