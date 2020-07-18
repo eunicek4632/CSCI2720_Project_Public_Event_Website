@@ -102,6 +102,43 @@ router.post('/login', async(req, res) => {
 
 });
 
+router.get('/getEvent', function(req, res) {
+    console.log('now get events');
+
+    try {
+        var event = await event.find();
+
+        if (!event) {
+            var payload = {
+                "success": 0,
+                "message": "No event to fetch"
+            }
+            res.status(211).send(payload);
+        }
+
+        console.log(event);
+
+        var payload = {
+            "success": 1,
+            "event": event
+        }
+
+        res.status(200).send(payload);
+
+
+    } catch (e) {
+        console.error(e);
+        var payload = {
+            "success": 0,
+            "message": "Server Error"
+        }
+        res.status(500).send(payload);
+    }
+
+});
+
+
+
 
 //
 // Flush

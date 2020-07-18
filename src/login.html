@@ -25,66 +25,66 @@
 
 <script>
     /*
-        jQuery.fn.clickToggle = function(a,b) {
-          var ab = [b,a];
-          return this.on("click", function(){ ab[this._tog^=1].call(this); });
-        };
+                                                                    jQuery.fn.clickToggle = function(a,b) {
+                                                                      var ab = [b,a];
+                                                                      return this.on("click", function(){ ab[this._tog^=1].call(this); });
+                                                                    };
 
-          $(document).ready(function(){
-            $("#new").clickToggle(function(){
-              //for login 
-              var username1 = document.getElementById("username").value;
-                var password1 = document.getElementById("pw").value;
-                if (username1 == '' || password1 == '')
-                    alert("You cannot leave any of the fields empty");
-                else {
-                        
-                        $.ajax({
-                          url: "/operation/login",
-                          type: "POST",
-                          dataType: "text",
-                          data : {username: username1, password: password1},
+                                                                      $(document).ready(function(){
+                                                                        $("#new").clickToggle(function(){
+                                                                          //for login 
+                                                                          var username1 = document.getElementById("username").value;
+                                                                            var password1 = document.getElementById("pw").value;
+                                                                            if (username1 == '' || password1 == '')
+                                                                                alert("You cannot leave any of the fields empty");
+                                                                            else {
+                                                                                    
+                                                                                    $.ajax({
+                                                                                      url: "/operation/login",
+                                                                                      type: "POST",
+                                                                                      dataType: "text",
+                                                                                      data : {username: username1, password: password1},
 
-                          success: function(response) {
+                                                                                      success: function(response) {
 
-                            var parsed_data = JSON.parse(response);
+                                                                                        var parsed_data = JSON.parse(response);
 
-                            if (!parsed_data.success ) {
-                              return console.log(parsed_data.message);
-                            }
-                            else{
-                              console.log('user id is'+ parsed_data.credential);
-                              sessionStorage.setItem("userID", parsed_data.credential);
-                              changePage('home');
-                              //note: added a few lines and log_out() function
-                              var msg = "Welcome, " + parsed_data.credential;
-                              document.getElementById("log_user").innerHTML = msg;
-                              document.getElementById("log_btn").innerHTML = "Log out";
-                              document.getElementById("log_btn").setAttribute("onclick",log_out());
-                            }
+                                                                                        if (!parsed_data.success ) {
+                                                                                          return console.log(parsed_data.message);
+                                                                                        }
+                                                                                        else{
+                                                                                          console.log('user id is'+ parsed_data.credential);
+                                                                                          sessionStorage.setItem("userID", parsed_data.credential);
+                                                                                          changePage('home');
+                                                                                          //note: added a few lines and log_out() function
+                                                                                          var msg = "Welcome, " + parsed_data.credential;
+                                                                                          document.getElementById("log_user").innerHTML = msg;
+                                                                                          document.getElementById("log_btn").innerHTML = "Log out";
+                                                                                          document.getElementById("log_btn").setAttribute("onclick",log_out());
+                                                                                        }
 
-                            
-                            
+                                                                                        
+                                                                                        
 
-                          },
-                          error: function(error){
-                            console.log('the operation was not loaded',error);
-                          },
-                          complete: function(xhr, status){
-                            console.log("the request is completed");
-                          }
-                        });
-                      }
-              }, function(){
-                  //for logout
-                  sessionStorage.removeItem("userID");
-                  console.log("log out!");
-                  document.getElementById("log_user").innerHTML = "";
-                  document.getElementById("log_btn").innerHTML = "Log in";
-                  changePage("login");
-              });
-          });
-        */
+                                                                                      },
+                                                                                      error: function(error){
+                                                                                        console.log('the operation was not loaded',error);
+                                                                                      },
+                                                                                      complete: function(xhr, status){
+                                                                                        console.log("the request is completed");
+                                                                                      }
+                                                                                    });
+                                                                                  }
+                                                                          }, function(){
+                                                                              //for logout
+                                                                              sessionStorage.removeItem("userID");
+                                                                              console.log("log out!");
+                                                                              document.getElementById("log_user").innerHTML = "";
+                                                                              document.getElementById("log_btn").innerHTML = "Log in";
+                                                                              changePage("login");
+                                                                          });
+                                                                      });
+                                                                    */
     function verify() {
         var username1 = document.getElementById("username").value;
         var password1 = document.getElementById("pw").value;
@@ -118,6 +118,7 @@
                         //document.getElementById("login_btn").setAttribute("onclick",log_out());
                         document.getElementById("login_btn").style.display = "none";
                         document.getElementById("logout_btn").style.display = "";
+                        getEvent();
                     }
 
                 },
@@ -131,6 +132,41 @@
 
 
         }
+    }
+
+    function getEvent() {
+        $.ajax({
+            url: "/operation/getEvent",
+            type: "GET",
+
+            success: function(response) {
+
+                var parsed_data = JSON.parse(response);
+
+                if (!parsed_data.success) {
+                    return console.log(parsed_data.message);
+                } else {
+                    //console.log('user id is' + parsed_data.credential);
+                    //sessionStorage.setItem("userID", parsed_data.credential);
+                    //changePage('home');
+                    ////note: added a few lines and log_out() function
+                    //var msg = "Welcome, " + parsed_data.username1;
+                    //document.getElementById("log_user").innerHTML = msg;
+                    //document.getElementById("login_btn").style.display = "none";
+                    //document.getElementById("logout_btn").style.display = "";
+
+                }
+
+            },
+            error: function(error) {
+                console.log('the operation was not loaded', error);
+            },
+            complete: function(xhr, status) {
+                console.log("the request is completed");
+            }
+        });
+
+
     }
 
     function log_out() {
