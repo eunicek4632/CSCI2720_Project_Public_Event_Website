@@ -22,13 +22,12 @@
     </form>        
   </div>
 
-
-<script>
-  jQuery.fn.clickToggle = function(a,b) {
+  
+<script>/*
+jQuery.fn.clickToggle = function(a,b) {
   var ab = [b,a];
   return this.on("click", function(){ ab[this._tog^=1].call(this); });
-  };
-
+};
 
   $(document).ready(function(){
     $("#new").clickToggle(function(){
@@ -84,8 +83,7 @@
           changePage("login");
       });
   });
-
-  /*
+*/
     function verify() {
         var username1 = document.getElementById("username").value;
         var password1 = document.getElementById("pw").value;
@@ -113,8 +111,10 @@
                       //note: added a few lines and log_out() function
                       var msg = "Welcome, " + parsed_data.credential;
                       document.getElementById("log_user").innerHTML = msg;
-                      document.getElementById("log_btn").innerHTML = "Log out";
-                      document.getElementById("log_btn").setAttribute("onclick",log_out());
+                      document.getElementById("login_btn").innerHTML = "Log out";
+                      document.getElementById("login_btn").setAttribute("onclick",log_out());
+                      document.getElementById("login_btn").style.display="none";
+                      document.getElementById("logout_btn").style.display="";
                     }
 
                     
@@ -138,8 +138,8 @@
       sessionStorage.removeItem("userID");
       console.log("log out!");
       document.getElementById("log_user").innerHTML = "";
-      document.getElementById("log_btn").innerHTML = "Log in";
-      document.getElementById("log_btn").setAttribute("onclick",verify());
+      document.getElementById("login_btn").style.display="";
+      document.getElementById("logout_btn").style.display="none";
       changePage("login");
-    }*/
+    }
 </script>

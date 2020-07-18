@@ -58,8 +58,7 @@ router.post('/login', async(req, res)=>{
 				"success": 0,
 				"message": "User Not Exist"
 			}
-			return res.status(211).send(payload);
-			// return res.status(400).send('User not found!');
+			res.status(400).send(payload);
 		}
 
 		console.log("from server" + user.password);
@@ -72,7 +71,7 @@ router.post('/login', async(req, res)=>{
 				"message": "Incorret Password!"
 			}
 
-			return res.status(212).send(payload);
+			res.status(400).send(payload);
 		}
 
 		var payload = {
