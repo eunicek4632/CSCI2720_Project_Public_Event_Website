@@ -30,9 +30,6 @@ app.use('/operation',operation);
 //
 // Data schema
 //
-
-
-
 var commentSchema = mongoose.Schema({
     commentID: {
         type: Number,

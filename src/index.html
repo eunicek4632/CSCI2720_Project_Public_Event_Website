@@ -98,19 +98,20 @@
 
 
   function flush(){
-    const url = "https://ogcef.one.gov.hk/event-api/eventList.json";
+    $.ajax({
+      url: "https://ogcef.one.gov.hk/event-api/eventList",
+      type: "GET",
 
-
-    console.log(url);
-
-    $.getJSON(url, function(result){
-      $.each(result,function(i,field){
-        console.log(field + '\n');
-
-        return i < 10;
-      });
-
-      
+      success: function(response) {
+        console.log('success');
+        console.log(response);
+      },
+      error: function(error){
+        console.log('the flush was not loaded',error);
+      },
+      complete: function(xhr, status){
+        console.log("the flush is completed");
+      }
     });
   }
 
