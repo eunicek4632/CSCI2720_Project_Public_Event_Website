@@ -135,11 +135,11 @@ jQuery.fn.clickToggle = function(a,b) {
 
     function log_out(){
       //note: need to save data of user before log out
+      changePage("login");
       sessionStorage.removeItem("userID");
       console.log("log out!");
       document.getElementById("log_user").innerHTML = "";
       document.getElementById("login_btn").style.display="";
       document.getElementById("logout_btn").style.display="none";
-      changePage("login");
     }
 </script>
