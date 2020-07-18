@@ -75,14 +75,14 @@
                   }
                 });
               }
-      }), function(){
+      }, function(){
           //for logout
           sessionStorage.removeItem("userID");
           console.log("log out!");
           document.getElementById("log_user").innerHTML = "";
           document.getElementById("log_btn").innerHTML = "Log in";
           changePage("login");
-      }
+      });
   });
 
   /*
