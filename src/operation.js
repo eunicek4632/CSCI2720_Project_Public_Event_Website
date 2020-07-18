@@ -106,24 +106,27 @@ router.get('/getEvent', function(req, res) {
     console.log('now get events');
 
     try {
-        var event = Event.find();
+        var event = Event.find({},
+            function(err, events) {
+                if (!events) {
+                    var payload = {
+                        "success": 0,
+                        "message": "No event to fetch"
+                    }
+                    res.status(211).send(payload);
+                }
 
-        if (!event) {
-            var payload = {
-                "success": 0,
-                "message": "No event to fetch"
-            }
-            res.status(211).send(payload);
-        }
+                console.log(events);
 
-        console.log(event);
+                var payload = {
+                    "success": 1,
+                    "event": events
+                }
 
-        var payload = {
-            "success": 1,
-            "event": event
-        }
+                res.status(200).send(payload);
+            });
 
-        res.status(200).send(payload);
+
 
 
     } catch (e) {
