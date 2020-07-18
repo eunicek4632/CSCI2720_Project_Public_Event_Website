@@ -122,6 +122,7 @@ router.get('/flush', function(req,res){
 
             try{
             	for (var i = 0; i < 50; i++) {
+
             		var event = new Event({
             			eventID: jsonParsed[i].event_id,
             			eventSummary: jsonParsed[i].event_summary,
@@ -135,8 +136,11 @@ router.get('/flush', function(req,res){
             	}
 
 
-            	var payload = 
-            	res.status(200).
+            	var payload = {
+            		"success": 1,
+            		"message": "Flush is completed successfully"
+            	};
+            	res.status(200).send(payload);
             }catch(err){
             	console.log(err.message);
             	var payload = {
