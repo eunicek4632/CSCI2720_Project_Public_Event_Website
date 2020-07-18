@@ -48,6 +48,11 @@
                       console.log('user id is'+ parsed_data.credential);
                       sessionStorage.setItem("userID", parsed_data.credential);
                       changePage('home');
+                      //note: added a few lines and log_out() function
+                      var msg = "Welcome, " + parsed_data.credential;
+                      document.getElementById("log_user").innerHTML = msg;
+                      document.getElementById("log_btn").innerHTML = "Log out";
+                      document.getElementById("log_btn").setAttribute("onclick",log_out());
                     }
 
                     
@@ -66,5 +71,11 @@
 
 
         }
+    }
+
+    function log_out(){
+      //note: need to save data of user before log out
+      sessionStorage.removeItem("userID");
+      changePage("login");
     }
 </script>
