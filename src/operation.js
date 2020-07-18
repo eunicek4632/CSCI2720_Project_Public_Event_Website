@@ -44,6 +44,10 @@ router.post('/reg', function(req, res){
 	}
 });
 
+
+//
+// Login
+//
 router.post('/login', async(req, res)=>{
 	console.log("log in user!");
 
@@ -92,6 +96,14 @@ router.post('/login', async(req, res)=>{
 		res.status(500).send(payload);
 	}
 
+
+});
+
+
+//
+// Flush
+//
+router.get('/flush', function(req,res){
 
 });
 

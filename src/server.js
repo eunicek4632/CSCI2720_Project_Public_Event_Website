@@ -31,30 +31,7 @@ app.use('/operation',operation);
 // Data schema
 //
 
-// var userSchema = mongoose.Schema({
-//     userID: {
-//         type: Number,
-//         required: true,
-//         unique: true
-//     },
-//     username: {
-//         type: String,
-//         required: true,
-//         unique: true
-//     },
-//     password: {
-//         type: String,
-//         required: true
-//     },
-//     favoriteEvent: {
-//         type: [Number],
-//         required: true
-//     } //,
-//     //     //icon: {
-//     //     //data: Buffer,
-//     //     //contentType: String
-//     //     //}
-// });
+
 
 var commentSchema = mongoose.Schema({
     commentID: {
@@ -84,8 +61,6 @@ var commentSchema = mongoose.Schema({
     }
 });
 
-
-// var user = mongoose.model('user', userSchema);
 var comment = mongoose.model('comment', commentSchema);
 
 //

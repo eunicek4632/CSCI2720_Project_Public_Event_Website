@@ -51,6 +51,7 @@
 <script>  
 
   console.log(sessionStorage.getItem("userID"));
+
   // for normal navigation of logged user
   function changePage(page){
     var link;
@@ -93,6 +94,24 @@
     });
 
     return false;
+  }
+
+
+  function flush(){
+    const url = "https://ogcef.one.gov.hk/event-api/eventList.json";
+
+
+    console.log(url);
+
+    $.getJSON(url, function(result){
+      $.each(result,function(i,field){
+        console.log(field + '\n');
+
+        return i < 10;
+      });
+
+      
+    });
   }
 
   // for history backward/forward
