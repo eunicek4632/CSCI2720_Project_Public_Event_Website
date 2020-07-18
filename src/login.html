@@ -158,10 +158,10 @@
                     //parsed_data.map((e, index) => {
                     //id is a number
                     //alert(typeof(e.event_id));
-                    var $temp = $('<tr id="' + parsed_data.event.event_id + '">\
-                <td scope="row" class="p-3">' + parsed_data.event.event_summary + '</td>\
-                <td class="p-3">' + parsed_data.event.event_location + '</td>\
-                <td class="p-3 ">' + parsed_data.event.event_org + '</td>\
+                    var $temp = $('<tr id="' + parsed_data.event.eventID + '">\
+                <td scope="row" class="p-3">' + parsed_data.event.eventSummary + '</td>\
+                <td class="p-3">' + parsed_data.event.eventLocation + '</td>\
+                <td class="p-3 ">' + parsed_data.event.eventOrganizer + '</td>\
                 <td class="p-4"><button></button></td>\
                 <td class="p-3"><input type="button" value="Delete"></td>\
                 ');
