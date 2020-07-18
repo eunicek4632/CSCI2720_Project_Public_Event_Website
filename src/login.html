@@ -152,10 +152,10 @@
                 } else {
 
 
-                    parsed_data.map((e, index) => {
-                        //id is a number
-                        //alert(typeof(e.event_id));
-                        var $temp = $('<tr id="' + e.event_id + '">\
+                    //parsed_data.map((e, index) => {
+                    //id is a number
+                    //alert(typeof(e.event_id));
+                    var $temp = $('<tr id="' + e.event_id + '">\
                 <td scope="row" class="p-3">' + e.event_summary + '</td>\
                 <td class="p-3">' + e.event_location + '</td>\
                 <td class="p-3 ">' + e.event_org + '</td>\
@@ -163,20 +163,20 @@
                 <td class="p-3"><input type="button" value="Delete"></td>\
                 ');
 
-                        $temp.find("td:first").click(function() {
-                            getEachEvent(savedResponse);
-                        });
-
-                        //if (fav.indexOf(index) == -1) {
-                        //$temp.find("button").html("Add to Favourites");
-                        //} else {
-                        //$temp.find("button").html("Undo Favourites");
-                        //}
-                        $temp.find("button").attr("id", index);
-                        $temp.find("button").addClass("like");
-
-                        $("#evts").append($temp);
+                    $temp.find("td:first").click(function() {
+                        getEachEvent(savedResponse);
                     });
+
+                    //if (fav.indexOf(index) == -1) {
+                    //$temp.find("button").html("Add to Favourites");
+                    //} else {
+                    //$temp.find("button").html("Undo Favourites");
+                    //}
+                    $temp.find("button").attr("id", index);
+                    $temp.find("button").addClass("like");
+
+                    $("#evts").append($temp);
+                    //});
 
 
                 }
