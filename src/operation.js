@@ -42,7 +42,7 @@ router.post('/reg', function(req, res){
 			"success": 0,
 			"message": "Error in Saving"
 		}
-		res.status(500).send(payload);
+		res.status(500);
 	}
 });
 
@@ -120,7 +120,25 @@ router.get('/flush', function(req,res){
 
             console.log("ID" + jsonParsed[0].event_id + " - Summary:" + jsonParsed[0].event_summary + "- Date:" + jsonParsed[0].event_date + "- Organizer:" + jsonParsed[0].event_org + "- Location:" + jsonParsed[0].event_location + "- ICS:" + jsonParsed[0].event_ics + "\n");
 
+            try{
+            	var event = new Event({
+            		eventID: jsonParsed[0].event_id,
+            		eventSummary: jsonParsed[0].event_summary,
+            		eventDate: jsonParsed[0].event_date,
+            		eventOrganizer: jsonParsed[0].event_org,
+            		evenLocation: jsonParsed[0].event_location,
+            		eventICS: jsonParsed[0].event_ics
+            	});
 
+            	event.save();
+            }catch(err){
+            	console.log(err.message);
+            	var payload = {
+            		"success": 0,
+            		"message": "Error in flushing"
+            	}
+            	res.status(500);
+            }
         
 	});
 

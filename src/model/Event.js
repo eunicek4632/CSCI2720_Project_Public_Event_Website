@@ -25,10 +25,6 @@ var eventSchema = mongoose.Schema({
     eventICS: {
         type: String,
         required: true
-    },
-    commentArray: {
-        type: [Number],
-        required: true
     }
 });
 
