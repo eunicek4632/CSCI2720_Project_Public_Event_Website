@@ -145,45 +145,42 @@
 
                 //var parsed_data = JSON.parse(response);
                 var parsed_data = response;
-                savedResponse = parsed_data;
+                savedResponse = parsed_data.event;
 
                 if (!parsed_data.success) {
                     return console.log(parsed_data.message);
                 } else {
 
-                    console.log(parsed_data.event);
+                    //console.log(parsed_data.event);
 
                     //parsed_data = JSON.parse(response)
 
-                    //parsed_data.map((e, index) => {
-                    //id is a number
-                    //alert(typeof(e.event_id));
-                    var $temp = $('<tr id="' + parsed_data.event.eventID + '">\
-                <td scope="row" class="p-3">' + parsed_data.event.eventSummary + '</td>\
-                <td class="p-3">' + parsed_data.event.eventLocation + '</td>\
-                <td class="p-3 ">' + parsed_data.event.eventOrganizer + '</td>\
-                <td class="p-4"><button></button></td>\
-                <td class="p-3"><input type="button" value="Delete"></td>\
-                ');
+                    savedResponse.map((e, index) => {
+                        //id is a number
+                        //alert(typeof(e.event_id));
+                        var $temp = $('<tr id="' + e.eventID + '">\
+                            <td scope="row" class="p-3">' + e.eventSummary + '</td>\
+                            <td class="p-3">' + e.eventLocation + '</td>\
+                            <td class="p-3 ">' + e.eventOrganizer + '</td>\
+                            <td class="p-4"><button></button></td>\
+                            <td class="p-3"><input type="button" value="Delete"></td>\
+                            ');
 
-                    $temp.find("td:first").click(function() {
-                        getEachEvent(savedResponse);
+                        //$temp.find("td:first").click(function() {
+                        //    getEachEvent(savedResponse[e.eventID]);
+                        //});
+
+                        //if (fav.indexOf(index) == -1) {
+                        //$temp.find("button").html("Add to Favourites");
+                        //} else {
+                        //$temp.find("button").html("Undo Favourites");
+                        //}
+                        $temp.find("button").attr("id", index);
+                        $temp.find("button").addClass("like");
+
+                        $("#evts").append($temp);
                     });
-
-                    //if (fav.indexOf(index) == -1) {
-                    //$temp.find("button").html("Add to Favourites");
-                    //} else {
-                    //$temp.find("button").html("Undo Favourites");
-                    //}
-                    //$temp.find("button").attr("id", index);
-                    //$temp.find("button").addClass("like");
-
-                    $("#evts").append($temp);
-                    //});
-
-
                 }
-
             },
             error: function(error) {
                 console.log('the operation was not loaded', error);
