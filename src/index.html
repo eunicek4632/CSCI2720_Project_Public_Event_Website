@@ -99,10 +99,8 @@
 
   function flush(){
     $.ajax({
-      url: "https://ogcef.one.gov.hk/event-api/eventList",
+      url: "/operation/flush",
       type: "GET",
-      dataType: "json",
-
       success: function(response) {
         console.log('success!!!!');
         console.log(response);

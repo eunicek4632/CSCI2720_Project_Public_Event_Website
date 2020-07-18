@@ -104,7 +104,17 @@ router.post('/login', async(req, res)=>{
 // Flush
 //
 router.get('/flush', function(req,res){
+	console.log('now start flush');
 
+	const url = "https://ogcef.one.gov.hk/event-api/eventList.json";
+
+	const fetchJSON = aysnc url =>{
+		try{
+			
+		} catch{
+			console.log(error);
+		}
+	}
 });
 
 
