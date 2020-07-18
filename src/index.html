@@ -36,10 +36,11 @@
         </li>
 
       </ul>
-
-      <p class="nav mx-3 text-light">Welcome, Username</p>
-      <a class="nav-link" href="javascript:void(0);" onclick="changePage('login')">Log in</a>
-      <!-- <a class="nav-link" href="javascript:void(0);" onclick="changePage('createAC')">Create</a> -->
+      <!--note: added ids: log_user & log_btn-->
+      <p class="nav mx-3 text-light" id="log_user"></p>
+      <a class="nav-link" href="javascript:void(0);" onclick="changePage('login')" id="login_btn">Log in</a>
+      <a class="nav-link" href="javascript:void(0);" onclick="log_out()" id="logout_btn" style="display:none;">Log out</a>
+      <a class="nav-link" href="javascript:void(0);" onclick="changePage('createAC')">Create</a>
     </div>
   </nav>
 
@@ -60,6 +61,7 @@
       link = "/login";
     }
     else{
+
       if (page == 'home') 
         { link = "/home";}
 
