@@ -112,6 +112,16 @@ router.get('/flush', function(req,res){
 		try{
 			const response = await fetch(url);
 			const json = await response.json();
+
+			var replacer = function(key,value) {
+				return typeof value === 'undefined' ? null : value;
+			}
+
+			var jsonParsed = JSON.parse(JSON.stringify(json,replacer));
+
+			for (var i = 0; i < 3; i++) {
+				console.log('eventID:' + jsonParsed[i].event_id + 'eventSummary:' + jsonParsed[i].event_summary +'\n');
+			}
 		} catch{
 			console.log(error);
 		}
