@@ -126,7 +126,7 @@ router.get('/flush', function(req,res){
             		eventSummary: jsonParsed[0].event_summary,
             		eventDate: jsonParsed[0].event_date,
             		eventOrganizer: jsonParsed[0].event_org,
-            		evenLocation: jsonParsed[0].event_location,
+            		eventLocation: jsonParsed[0].event_location,
             		eventICS: jsonParsed[0].event_ics
             	});
 
