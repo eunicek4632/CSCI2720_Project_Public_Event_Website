@@ -1,6 +1,8 @@
 var express = require('express');
 var router = express.Router();
+
 const bcrypt = require("bcryptjs")
+const fetch = require('node-fetch');
 
 const User = require("./model/User");
 
