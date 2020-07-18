@@ -1,5 +1,6 @@
 var express = require('express');
 var router = express.Router();
+var mongoose = require('mongoose');
 
 const bcrypt = require("bcryptjs")
 const fetch = require('node-fetch');
@@ -111,7 +112,7 @@ router.get('/flush', function(req,res){
 	mongoose.connection.collections['events'].drop(function(err){
 		console.log('collection dropped');
 	})
-	
+
 	console.log('now start flush');
 
 	let url = "https://ogcef.one.gov.hk/event-api/eventList.json";
