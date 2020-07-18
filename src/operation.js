@@ -5,7 +5,7 @@ const bcrypt = require("bcryptjs")
 const fetch = require('node-fetch');
 
 const User = require("./model/User");
-
+const Event = require("./model/Event");
 //
 // Create user
 //
@@ -118,7 +118,7 @@ router.get('/flush', function(req,res){
             }
             var jsonParsed = JSON.parse(JSON.stringify(json, replacer));
 
-            console.log(jsonParsed[0].event_id + " - " + jsonParsed[0].event_summary);
+            console.log("ID" + jsonParsed[0].event_id + " - Summary:" + jsonParsed[0].event_summary + "- Date:" + jsonParsed[0].event_date + "- Organizer:" + jsonParsed[0].event_org + "- Location:" + jsonParsed[0].event_location + "- ICS:" + jsonParsed[0].event_ics + "\n");
 
 
         
