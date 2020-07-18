@@ -108,9 +108,10 @@ router.get('/flush', function(req,res){
 
 	const url = "https://ogcef.one.gov.hk/event-api/eventList.json";
 
-	const fetchJSON = aysnc url =>{
+	const fetchJSON = async url =>{
 		try{
-			
+			const response = await fetch(url);
+			const json = await response.json();
 		} catch{
 			console.log(error);
 		}
