@@ -106,7 +106,7 @@ router.get('/getEvent', function(req, res) {
     console.log('now get events');
 
     try {
-        var event = Event.find({},
+        Event.find({},
             function(err, events) {
                 if (!events) {
                     var payload = {
