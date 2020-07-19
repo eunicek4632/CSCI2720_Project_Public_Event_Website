@@ -10,20 +10,8 @@ var commentSchema = mongoose.commentSchema({
 	        type: String,
 	        required: true
 	    },
-	    userID: {
-	        type: Number,
-	        required: true
-	    },
 	    content: {
 	        type: String,
-	        required: true
-	    },
-	    timestamp: {
-	        type: Date,
-	        required: true
-	    },
-	    like: {
-	        type: Number,
 	        required: true
 	    }
 })
