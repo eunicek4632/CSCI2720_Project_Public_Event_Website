@@ -237,6 +237,9 @@ router.delete('/deleteEvent',function(req,res){
     })
 })
 
+//
+// Like an event
+//
 router.post('/likeEvent',async(req,res)=>{
     var event_id = req.query['eventID'];
     var user_id = req.query['userID']; 
@@ -247,6 +250,31 @@ router.post('/likeEvent',async(req,res)=>{
     console.log(doc.username);
 
 });
+
+//
+// Get user's fav event list
+//
+router.get('/getUserFavEvents',function(req,res){
+    var user_id = req.query['userID']; 
+
+    var query = User.findOne({userID: user_id}).select('favoriteEvent');
+
+    query.exec(function(err,result){
+        if (err) {
+            console.log(err);
+        }
+        else{
+            // var payload ={
+            //     "success": 0,
+            //     "list": result
+            // }
+            console.log(result);
+            res.status(200).send();
+        }
+    })
+});
+
+
 
 //
 // Post Comment

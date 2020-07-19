@@ -176,14 +176,49 @@
 
   }
 
+  //toggle favourites
+  // $(document).on("click", "button.like", function() {
+  //     var id = $(this).attr("id");
+  //     //id is a string
+  //     //alert(typeof(id));
+  //     var index = fav.indexOf(id);
+  //     //alert(index);
+
+  //     //if the event is not one of favourites
+  //     if (index > -1) {
+  //         fav.push(id);
+  //         $(this).html("Undo Favourites");
+
+  //     } else {
+  //         fav.splice(id, 1);
+  //         $(this).html("Add to Favourites");
+  //     }
+  //     alert(fav);
+  // });
+
   function likeEvent(event_id){
     console.log('like!!');
     var user_id = sessionStorage.getItem("userID");
-    console.log(user_id);
-    console.log(event_id);
+    // console.log(user_id);
+    // console.log(event_id);
     $.ajax({
       url: "/operation/likeEvent?" + $.param({"eventID":event_id,"userID": user_id}),
       type: "POST",
+      success: function(response){
+        console.log('success');
+      },
+      error: function(xhr,status){
+        console.log("the delete request is not completed.");
+      }
+    })
+  }
+
+  function getUserFavEvents(){
+    console.log('Now get fav events!');
+    var user_id = sessionStorage.getItem("userID");
+    $.ajax({
+      url: "/operation/getUserFavEvents"+ $.param({"userID": user_id}),
+      type: "GET",
       success: function(response){
         console.log('success');
       },
@@ -296,25 +331,7 @@ function sortTable(n) {
         }
     }
 }
-    //toggle favourites
-    $(document).on("click", "button.like", function() {
-        var id = $(this).attr("id");
-        //id is a string
-        //alert(typeof(id));
-        var index = fav.indexOf(id);
-        //alert(index);
 
-        //if the event is not one of favourites
-        if (index > -1) {
-            fav.push(id);
-            $(this).html("Undo Favourites");
-
-        } else {
-            fav.splice(id, 1);
-            $(this).html("Add to Favourites");
-        }
-        alert(fav);
-    });
 //check if the add form has any empty fields
 //note: need to add new event to database
 function add_evt(){
