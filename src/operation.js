@@ -57,7 +57,7 @@ router.post('/login', async(req, res) => {
     var username_input = req.body['username'];
     var password_input = req.body['password'];
     // var hash = bcrypt.hashSync(password_input);
-
+    // hash successful
     try {
         var user = await User.findOne({ username: username_input });
 
