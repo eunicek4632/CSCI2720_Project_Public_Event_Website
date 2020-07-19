@@ -222,7 +222,7 @@
     console.log('Now get fav events!');
     var user_id = sessionStorage.getItem("userID");
     $.ajax({
-      url: "/operation/getUserFavEvents"+ $.param({"userID": user_id}),
+      url: "/operation/getUserFavEvents?"+ $.param({"userID": user_id}),
       type: "GET",
       success: function(response){
         console.log('success');
