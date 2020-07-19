@@ -18,14 +18,45 @@
           <input class="form-control mr-sm-2" id="input" type="search" placeholder="Search" aria-label="Search" onkeyup="menu()">
           
           <!--Execute Searc(function duplicated)-->
+          <!--
           <button type="button" class="btn btn-info" onclick="menu()">
             <span class="glyphicon glyphicon-search"></span> Search
-          </button>
+          </button>-->
           <button type="button" class="btn btn-primary mx-2" onclick="menu()">
             <span class="glyphicon glyphicon-search"></span> Add Event
           </button>
         </form>
       </div>
+      <form id="create" class="form-group" style="display:none;">
+        <br>
+        <label for = "event_summ">Event Name:</label><br>
+        <div class = "form-row">
+            <div class = "col-4">
+                <input class = "form-control" type = "text" id = "event_summ" name = "event_summ"><br>
+            </div>
+        </div>
+        <label for="event_loc">Event Location:</label><br>
+        <div class="form-row">
+            <div class="col-4">
+                <input class="form-control" type="text" id="event_loc" name="event_loc"><br>
+            </div>
+        </div>
+        <label for="event_org">Event Organizer:</label><br>
+        <div class="form-row">
+            <div class="col-4">
+                <input class="form-control" type="text" id="event_org" name="event_org"><br>
+            </div>
+        </div>
+        <label for="event_desc">Event Description:</label><br>
+        <div class="form-row">
+            <div class="col-4">
+                <textarea class="form-control" rows="4" id="event_desc" name="event_desc"></textarea><br>
+            </div>
+        </div>
+        <button class="btn btn-primary" type="button" onclick = "add_evt()" id = "new">Add</button>
+      <br>
+      
+  </form>
       <!--
       <div class="dropdown-menu media-body" aria-labelledby="navbarDropdown">
         <a class="dropdown-item" href="#">Event ID</a>
@@ -279,5 +310,41 @@ function sortTable(n) {
         }
         alert(fav);
     });
+//check if the add form has any empty fields
+//note: need to add new event to database
+function add_evt(){
+  var e_summ = document.getElementById("event_summ").value;
+  var e_loc = document.getElementById("event_loc").value;
+  var e_org = document.getElementById("event_org").value;
+  var e_desc = document.getElementById("event_desc").value;
 
+  if(e_summ == "" || e_loc == "" || e_org == "" || e_desc == ""){
+    alert("You cannot leave any fields empty");
+  }
+  else{
+    //note: e_id need to get from server
+    var $temp = $('<tr id="'+ "eid" +'">\
+    <td scope="row" class="p-3">'+e_summ+'</td>\
+    <td class="p-3">'+e_loc+'</td>\
+    <td class="p-3 ">'+ e_org + '</td>\
+    <td class="p-4"><button>Add to Favourites</button></td>\
+    <td class="p-3"><input class="del" type="button" value="Delete"></td>\
+    ');
+    $temp.find("button").attr("id",new_index);
+    new_index++;
+    $temp.find("button").addClass("like");
+    $("#table").append($temp);
+  }
+}
+
+//toggle for showing/hiding the input event form
+function show_form(){
+  var status = document.getElementById("create").style.display;
+  if(status == "none"){
+    document.getElementById("create").style.display = "";
+  }
+  else{
+    document.getElementById("create").style.display = "none";
+  }
+}
 </script>
