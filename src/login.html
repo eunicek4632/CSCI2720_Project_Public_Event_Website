@@ -177,12 +177,11 @@
                         
                         $temp.find("td:first").on("click", function(){
                             var $k = $(this).parent("tr").attr("id");
-                            alert(savedResponse);
                             alert($k);
+                            getSingle();
                             result = savedResponse.filter(obj => {
                                 return obj.eventID === $k;
                             });
-                            alert(result);
                             changePage('event');
 
                             /*

@@ -57,12 +57,14 @@
         </p>
     </div>
     <script>
+
         alert(savedResponse);
-        alert(result);
         $(document).ready(function(){
             $(document).find("#summary").html(result.eventSummary);
             $(document).find("#e_id").html("#"+result.eventID);
             $(document).find("#date").html(result.eventDate);
         });
-
+        function getSingle(){
+            alert("ok");
+        }
     </script>
