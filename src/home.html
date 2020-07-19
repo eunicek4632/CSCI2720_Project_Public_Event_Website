@@ -123,7 +123,7 @@
                           <td scope="row" class="p-3">' + e.eventSummary + '</td>\
                           <td class="p-3">' + e.eventLocation + '</td>\
                           <td class="p-3 ">' + e.eventOrganizer + '</td>\
-                          <td class="p-4"><input type="button" value="'+flag+'" onclick="likeEvent('+e.eventID+')"></td>\
+                          <td class="p-4"><input type="button" value="'+flag+'" onclick="likeEvent(this)" id="'+e.eventID+'"></td>\
                           <td class="p-3"><input type="button" value="Delete" onclick="deleteEvent('+e.eventID+')"></td>\
                           ');
 
@@ -202,9 +202,9 @@
   //     alert(fav);
   // });
 
-  function likeEvent(event_id){
+  function likeEvent(button,event_id){
     console.log('like!!');
-    console.log(this.value);
+    console.log(button.value);
     var user_id = sessionStorage.getItem("userID");
     // console.log(user_id);
     // console.log(event_id);
