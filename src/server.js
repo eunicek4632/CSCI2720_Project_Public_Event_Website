@@ -66,7 +66,7 @@ var comment = mongoose.model('comment', commentSchema);
 
 app.get('/event', function(req, res) {
 
-    res.sendFile(path.join(__dirname + "/event.html"));
+    res.sendFile(path.join(__dirname + "/Event.html"));
 
 });
 
