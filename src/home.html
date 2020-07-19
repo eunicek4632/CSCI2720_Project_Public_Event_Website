@@ -206,6 +206,7 @@
       type: "POST",
       success: function(response){
         console.log('success');
+        getUserFavEvents();
       },
       error: function(xhr,status){
         console.log("the delete request is not completed.");
