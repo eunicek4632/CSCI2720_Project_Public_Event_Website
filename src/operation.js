@@ -21,7 +21,7 @@ router.post('/reg', function(req, res) {
             username: req.body['username'],
             password: req.body['password'],
             userID: id,
-            favouriteEvent: []
+            favouriteEvent: [1]
         });
 
         user.save()

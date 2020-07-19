@@ -16,8 +16,7 @@ var UserSchema = mongoose.Schema({
         required: true
     },
     favoriteEvent: {
-        type: [],
-        required: true
+        type: [Number]
     } //,
     //     //icon: {
     //     //data: Buffer,
