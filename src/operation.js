@@ -231,8 +231,10 @@ router.delete('/deleteEvent',function(req,res){
 
     Event.deleteOne({eventID: event_id}, function(err){
         if (err) {
-            console.log(err);
+            return console.log(err);
         }
+
+        changePage('home')
     })
 })
 
