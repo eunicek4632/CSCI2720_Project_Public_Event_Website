@@ -260,7 +260,7 @@ router.post('/likeEvent',async(req,res)=>{
             console.log('hi');
         }else{
             
-            let doc = await User.findOneAndUpdate({userID: user_id}, {$pull:{favoriteEvent:event_id}},{new: true});
+            let doc = await User.findOneAndUpdate({userID: user_id}, {$pull:{favoriteEvent:event_id}});
             console.log('bye')
         }
 
