@@ -83,7 +83,7 @@ router.post('/login', async(req, res)=>{
 
 		var payload = {
 			"success": 1,
-			"credential" : user.userID
+			"credential" : user.userID,
 		}
 
 		res.status(200).send(payload);
