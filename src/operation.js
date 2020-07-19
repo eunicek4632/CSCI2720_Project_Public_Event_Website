@@ -249,6 +249,8 @@ router.post('/likeEvent',async(req,res)=>{
 
     console.log(doc.username);
 
+    res.status(200).send();
+
 });
 
 //
