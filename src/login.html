@@ -113,6 +113,7 @@
                         sessionStorage.setItem("userID", parsed_data.credential);
                         changePage('home');
                         //note: added a few lines and log_out() function
+                        name = parsed_data.username1;
                         var msg = "Welcome, " + parsed_data.username1;
                         document.getElementById("log_user").innerHTML = msg;
                         //document.getElementById("login_btn").innerHTML = "Log out";

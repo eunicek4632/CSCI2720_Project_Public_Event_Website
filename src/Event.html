@@ -148,6 +148,9 @@ ________________________________________________________________________________
     </p>
   </div>
     <script>
+
+var col = 0;
+
         $(document).ready(function(){
             alert(savedResponse);
             console.log(result);
@@ -162,7 +165,62 @@ ________________________________________________________________________________
         //$(document).find("#desc").html(data[0].event_desc);
         
         });
-        function getSingle(){
-            alert("ok");
+
+        $(document).on("click","button.like", function(){
+        var id = $(this).parents("div.jumbotron").attr("id");
+        //id is a string
+        var index = fav.indexOf(id);
+        //alert(index);
+        //if the event is one of favourites
+        if(index > -1){
+          //remove from the fav array and change the text on the button
+          fav.splice(index, 1);
+          $(this).html("Add to Favourites");
         }
+        else{
+          fav.push(id);  
+          $(this).html("Undo Favourites");
+        }
+        //alert(fav);
+    });
+
+    
+//change text in the diaplay textbox
+function update(str){
+    document.getElementById("update").value = str;
+}
+
+//change the content according to input
+//note need to change database
+function change_content(){
+    var cnt = document.getElementById("up_cnt").value;
+    var keywd = document.getElementById("update").value;
+
+    if(keywd == "Name"){
+        document.getElementById("summary").innerHTML = cnt;
+    }
+    if(keywd == "Location"){
+        document.getElementById("e_loc").innerHTML = cnt;
+    }
+    if(keywd == "Date"){
+        document.getElementById("date").innerHTML = cnt;
+    }
+    if(keywd == "Organizer"){
+        document.getElementById("e_org").innerHTML = cnt;
+    }
+    document.getElementById("up_cnt").value = '';
+}
+
+//toggle for the form for update(visible/ not visible)
+function show_update(){
+    var status = document.getElementById("update_form").style.display;
+    if(status == "none"){
+      document.getElementById("update_form").style.display = "";
+    }
+    else{
+      document.getElementById("update_form").style.display = "none";
+    }
+}
+
+
     </script>
