@@ -123,19 +123,9 @@
                           <td scope="row" class="p-3">' + e.eventSummary + '</td>\
                           <td class="p-3">' + e.eventLocation + '</td>\
                           <td class="p-3 ">' + e.eventOrganizer + '</td>\
-                          <td class="p-4"><input type="button" value="'+flag+'" onclick="likeEvent(this)" id="'+e.eventID+'"></td>\
+                          <td class="p-4"><input type="button" value="'+flag+'" onclick="likeEvent('+e.eventID+')" id="'+e.eventID+'"></td>\
                           <td class="p-3"><input type="button" value="Delete" onclick="deleteEvent('+e.eventID+')"></td>\
                           ');
-
-                      //$temp.find("td:first").click(function() {
-                      //    getEachEvent(savedResponse[e.eventID]);
-                      //});
-                      
-                      //if (fav.indexOf(index) == -1) {
-                      //$temp.find("button").html("Add to Favorites");
-                      //} else {
-                      //$temp.find("button").html("Undo Favorites");
-                      //}
                       
                       $temp.find("td:first").on("click", function(){
                           var $k = $(this).parent("tr").attr("id");
@@ -182,29 +172,14 @@
 
   }
 
-  //toggle Favorites
-  // $(document).on("click", "button.like", function() {
-  //     var id = $(this).attr("id");
-  //     //id is a string
-  //     //alert(typeof(id));
-  //     var index = fav.indexOf(id);
-  //     //alert(index);
-
-  //     //if the event is not one of Favorites
-  //     if (index > -1) {
-  //         fav.push(id);
-  //         $(this).html("Undo Favorites");
-
-  //     } else {
-  //         fav.splice(id, 1);
-  //         $(this).html("Add to Favorites");
-  //     }
-  //     alert(fav);
-  // });
-
-  function likeEvent(button,event_id){
+  function likeEvent(event_id){
     console.log('like!!');
-    console.log(button.value);
+    var flag =document.getElementById(event_id);
+    if (flag.value == 'Add to Favorites') {
+      flag.value = 'Undo Favorites';
+    }else{
+      flag.value = 'Add to Favorites';
+    }
     var user_id = sessionStorage.getItem("userID");
     // console.log(user_id);
     // console.log(event_id);
