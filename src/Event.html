@@ -235,7 +235,7 @@ function loadComment(){
     success: function(response){
       console.log('success');
       console.log(response);
-      
+      $('#list').append(response);
     },
     error: function(xhr,status){
       console.log("the delete request is not completed.");
