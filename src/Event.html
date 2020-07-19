@@ -155,7 +155,7 @@ ________________________________________________________________________________
             $(document).find("#summary").html(result[0].eventSummary);
             $(document).find("#e_id").html("#"+result[0].eventID);
             $(document).find("#date").html(result[0].eventDate);
-            $(document).find("#ics").html(result[0].eventICS);
+            $(document).find("#ics").attr("href", result[0].eventICS);
             $(document).find("div.jumbotron").attr("id", result[0].eventID);
             $(document).find("#e_loc").html(result[0].eventLocation);
             $(document).find("#e_org").html(result[0].eventOrganizer);
