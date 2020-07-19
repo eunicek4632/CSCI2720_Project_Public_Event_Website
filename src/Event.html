@@ -57,10 +57,9 @@
         </p>
     </div>
     <script>
-
-        alert(savedResponse);
-        console.log(result);
         $(document).ready(function(){
+            alert(savedResponse);
+            console.log(result);
             $(document).find("#summary").html(result.eventSummary);
             $(document).find("#e_id").html("#"+result.eventID);
             $(document).find("#date").html(result.eventDate);
