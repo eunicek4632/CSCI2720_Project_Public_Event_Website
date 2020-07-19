@@ -245,12 +245,14 @@ router.post('/likeEvent',async(req,res)=>{
     var user_id = req.query['userID']; 
     console.log('hi'+event_id+'bye'+user_id);
 
-    var query = User.findOne({userID: user_id},{"favoriteEvent":1});
+    var query = User.findOne({userID: user_id}).select('favoriteEvent');
+    
     query.exec(function(err,result){
         if (err) {console.log(err);}
 
         console.log(result.favoriteEvent);
         list = result.favoriteEvent;
+        
         console.log(list.find(element => element == event_id));
 
         if (list.find(element => element == event_id)) {
