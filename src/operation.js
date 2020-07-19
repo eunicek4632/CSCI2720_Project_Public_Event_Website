@@ -245,7 +245,17 @@ router.post('/likeEvent',async(req,res)=>{
     var user_id = req.query['userID']; 
     console.log('hi'+event_id+'bye'+user_id);
 
-    let doc = await User.findOneAndUpdate({userID: user_id}, {$push:{favoriteEvent:event_id}},{new: true});
+    var list = await User.findOne({userID: user_id},{favoriteEvent:1});
+    console.log(list);
+
+    if (list.find(element => element == event_id)) {
+        let doc = await User.findOneAndUpdate({userID: user_id}, {$pull:{favoriteEvent:event_id}},{new: true});
+    }else{
+        let doc = await User.findOneAndUpdate({userID: user_id}, {$push:{favoriteEvent:event_id}},{new: true});
+    }
+    
+
+    
 
     console.log(doc.username);
 
