@@ -116,14 +116,14 @@
                       var flag;
                       
                       if(fav.find(element => element == e.eventID))
-                        flag = 'Undo Favorites';
+                        flag = 'Undo';
                       else
-                        flag = 'Add to Favorites'; 
+                        flag = 'Add'; 
                       var $temp = $('<tr id="' + e.eventID + '">\
                           <td scope="row" class="p-3">' + e.eventSummary + '</td>\
                           <td class="p-3">' + e.eventLocation + '</td>\
                           <td class="p-3 ">' + e.eventOrganizer + '</td>\
-                          <td class="p-4"><input type="button" value="'+flag+'" onclick="likeEvent('+e.eventID+'); toggleLike('+e.eventID+');" id="'+e.eventID+'"></td>\
+                          <td class="p-4"><input type="button" value='+flag+' onclick="likeEvent('+e.eventID+'); toggleLike('+e.eventID+');" id="'+e.eventID+'"></td>\
                           <td class="p-3"><input type="button" value="Delete" onclick="deleteEvent('+e.eventID+')"></td>\
                           ');
                       
@@ -174,7 +174,7 @@
 
   function toggleLike(event_id){
     console.log('well'+ event_id);
-    document.getElementById(event_id).value = 'hi'
+    document.getElementById(event_id).value = 'hi';
   }
 
   function likeEvent(event_id){
