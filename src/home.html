@@ -180,12 +180,12 @@
   $(document).on('click','.likebtn',function(){
     console.log('why why');
     console.log($(this).attr('value'));
-    var value = $(this).attr('value')
-    if ( value == 'Undo') {
-      $(this).attr('value')= 'Add';
+    
+    if ( $(this).attr('value') == 'Undo') {
+      $(this).val('Add');
     }
     else{
-      $(this).attr('value')= 'Undo';
+      $(this).val('Undo');
     }
   });
 
