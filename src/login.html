@@ -178,8 +178,6 @@
                         
                         $temp.find("td:first").on("click", function(){
                             var $k = $(this).parent("tr").attr("id");
-                            alert($k);
-                            console.log(savedResponse[0]);
                             result = savedResponse.filter(obj => {
                                 return String(obj.eventID) === $k;
                             });
