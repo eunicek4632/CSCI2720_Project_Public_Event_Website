@@ -255,7 +255,7 @@ router.post('/likeEvent',async(req,res)=>{
 
         // list.find(element => element == event_id);
 
-        if (list.find(element => element == event_id)) {
+        if (list.find(element => element == event_id) != undefined) {
             let doc = User.findOneAndUpdate({userID: user_id}, {$pull:{favoriteEvent:event_id}},{new: true});
         }else{
             let doc = User.findOneAndUpdate({userID: user_id}, {$push:{favoriteEvent:event_id}},{new: true});
