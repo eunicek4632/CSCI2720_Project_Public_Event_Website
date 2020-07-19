@@ -234,7 +234,7 @@ router.delete('/deleteEvent',function(req,res){
             return console.log(err);
         }
 
-        changePage('home')
+        changePage('home');
     })
 })
 
