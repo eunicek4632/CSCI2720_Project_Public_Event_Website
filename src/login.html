@@ -175,7 +175,7 @@
                         //} else {
                         //$temp.find("button").html("Undo Favourites");
                         //}
-                        $temp.find("td:first").addEventListener("click", function(){
+                        $temp.getElementByTagName("td")[0].addEventListener("click", function(){
                             alert("clicked");
                         });
                         $temp.find("button").attr("id", index);
