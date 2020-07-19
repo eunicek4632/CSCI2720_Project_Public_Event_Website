@@ -60,10 +60,10 @@
         $(document).ready(function(){
             alert(savedResponse);
             console.log(result);
-            alert(result.eventSummary)
-            $(document).find("#summary").html(result.eventSummary);
-            $(document).find("#e_id").html("#"+result.eventID);
-            $(document).find("#date").html(result.eventDate);
+            alert(result.eventSummary);
+            $(document).find("#summary").html(result.eventSummary[0]);
+            $(document).find("#e_id").html("#"+result.eventID[0]);
+            $(document).find("#date").html(result.eventDate[0]);
         });
         function getSingle(){
             alert("ok");
