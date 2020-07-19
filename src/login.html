@@ -175,10 +175,11 @@
                         //} else {
                         //$temp.find("button").html("Undo Favourites");
                         //}
-                        /*
+                        
                         $temp.find("td:first").on("click", function(){
-                            alert("clicked");
-                        });*/
+                            var $k = $(this).parent("tr").attr("id");
+                            alert($k);
+                        });
                         $temp.find("button").attr("id", index);
                         $temp.find("button").addClass("like");
 
