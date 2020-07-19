@@ -245,22 +245,29 @@ router.post('/likeEvent',async(req,res)=>{
     var user_id = req.query['userID']; 
     console.log('hi'+event_id+'bye'+user_id);
 
-    var list = User.findOne({userID: user_id},{"favoriteEvent":1});
-    console.log(list);
-    console.log(list.find(element => element == event_id));
+    var query = User.findOne({userID: user_id},{"favoriteEvent":1});
+    query.exec(function(err,result){
+        if (err) {console.log(err);}
 
-    if (list.find(element => element == event_id)) {
-        let doc = User.findOneAndUpdate({userID: user_id}, {$pull:{favoriteEvent:event_id}},{new: true});
-    }else{
-        let doc = User.findOneAndUpdate({userID: user_id}, {$push:{favoriteEvent:event_id}},{new: true});
-    }
+        console.log(result);
+        console.log(list.find(element => element == event_id));
+
+        if (list.find(element => element == event_id)) {
+            let doc = User.findOneAndUpdate({userID: user_id}, {$pull:{favoriteEvent:event_id}},{new: true});
+        }else{
+            let doc = User.findOneAndUpdate({userID: user_id}, {$push:{favoriteEvent:event_id}},{new: true});
+        }
+
+        res.status(200).send();
+    })
+    
     
 
     
 
     // console.log(doc.username);
 
-    res.status(200).send();
+    
 
 });
 
