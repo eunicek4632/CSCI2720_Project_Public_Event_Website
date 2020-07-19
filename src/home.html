@@ -109,12 +109,12 @@
                   //console.log(parsed_data.event);
 
                   //parsed_data = JSON.parse(response)
-
+                  console.log(fav);
                   savedResponse.map((e, index) => {
                       //id is a number
                       //alert(typeof(e.event_id));
                       var flag;
-                      console.log(fav);
+                      
                       if(fav.find(element => element == e.eventID))
                         flag = 'Undo';
                       else
