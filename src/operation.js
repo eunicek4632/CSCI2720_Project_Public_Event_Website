@@ -15,11 +15,11 @@ router.post('/reg', function(req, res) {
 
     // generate id for user
     var id = Date.now();
-
+    var hash = bcrypt.hashSync(req.body['password']);
     try {
         var user = new User({
             username: req.body['username'],
-            password: req.body['password'],
+            password: hash,
             userID: id,
             favoriteEvent: [1]
         });
@@ -55,7 +55,7 @@ router.post('/login', async(req, res) => {
     console.log("log in user!");
 
     var username_input = req.body['username'];
-    var password_input = req.body['password'];
+    var password_input = bcrypt.hashSync(req.body['password']);
 
     try {
         var user = await User.findOne({ username: username_input });
@@ -70,7 +70,7 @@ router.post('/login', async(req, res) => {
 
         console.log("from server" + user.password);
 
-        var isMatch = await (password_input == user.password);
+        var isMatch = await bcrypt.compareSync(password_input,user.password);
 
         if (!isMatch) {
             var payload = {
