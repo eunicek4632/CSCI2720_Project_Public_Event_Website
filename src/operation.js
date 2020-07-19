@@ -3,6 +3,7 @@ var router = express.Router();
 var mongoose = require('mongoose');
 
 const bcrypt = require("bcryptjs")
+const saltRounds = 10;
 const fetch = require('node-fetch');
 
 const User = require("./model/User");
@@ -16,7 +17,7 @@ router.post('/reg', function(req, res) {
     // generate id for user
     var id = Date.now();
     var password_input = req.body['password'];
-    var hash = bcrypt.hashSync(password_input);
+    var hash = bcrypt.hashSync(password_input,saltRounds);
     try {
         var user = new User({
             username: req.body['username'],
@@ -55,7 +56,7 @@ router.post('/login', async(req, res) => {
 
     var username_input = req.body['username'];
     var password_input = req.body['password'];
-    var hash = bcrypt.hashSync(password_input);
+    // var hash = bcrypt.hashSync(password_input);
 
     try {
         var user = await User.findOne({ username: username_input });
@@ -70,8 +71,8 @@ router.post('/login', async(req, res) => {
 
         
 
-        var isMatch = bcrypt.compareSync(hash,user.password);
-
+        var isMatch = bcrypt.compareSync(password_input,user.password);
+        console.log(isMatch);
         if (!isMatch) {
             var payload = {
                 "success": 0,
