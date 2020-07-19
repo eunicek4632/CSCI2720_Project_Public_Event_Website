@@ -202,5 +202,34 @@ router.get('/flush', function(req, res) {
 
 });
 
+//
+// Post Comment
+//
+router.post('/postComment',function(req,res){
+
+});
+//
+// Create Event
+//
+router.post('/createEvent',function(req,res){
+
+});
+//
+// Update Event
+//
+router.put('/updateEvent',function(req,res){
+
+});
+//
+// Delete Event
+//
+router.delete('deleteEvent',function(req,res){
+
+    //use event id to delete the event object and comment object of it
+    var event_id = req.query('event_id');
+
+    console.log(event_id);
+})
+
 
 module.exports = router;

@@ -125,6 +125,18 @@
   getEvent();
 
   function deleteEvent(event_id){
-    console.log(event_id);
+    console.log('going to delete' + event_id);
+
+    $.ajax({
+      url: "operation/deleteEvent?" + $.param({"eventID":event_id}),
+      type: "DELETE",
+      success: function(response){
+        console.log('success');
+      },
+      error: function(xhr,status){
+        console.log("the delete request is not completed.");
+      }
+    })
+
   }
 </script>
