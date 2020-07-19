@@ -21,7 +21,7 @@ router.post('/reg', function(req, res) {
             username: req.body['username'],
             password: req.body['password'],
             userID: id,
-            favouriteEvent: [1]
+            favoriteEvent: [1]
         });
 
         user.save()
@@ -241,7 +241,7 @@ router.post('/likeEvent',async(req,res)=>{
     var user_id = req.query['userID']; 
     console.log('hi'+event_id+'bye'+user_id);
 
-    let doc = await User.findOneAndUpdate({userID: user_id}, {$push:{favouriteEvent:1}},{new: true});
+    let doc = await User.findOneAndUpdate({userID: user_id}, {$push:{favoriteEvent:1}},{new: true});
 
     console.log(doc.username);
 
