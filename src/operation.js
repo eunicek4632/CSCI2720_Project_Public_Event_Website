@@ -66,7 +66,7 @@ router.post('/login', async(req, res) => {
             res.status(211).send(payload);
         }
 
-        console.log("from server" + user.password);
+        
 
         var isMatch = await bcrypt.compareSync(password_input,user.password);
 
