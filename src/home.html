@@ -86,7 +86,7 @@
                           <td class="p-3">' + e.eventLocation + '</td>\
                           <td class="p-3 ">' + e.eventOrganizer + '</td>\
                           <td class="p-4"><button></button></td>\
-                          <td class="p-3"><input type="button" value="Delete" onclick="deleteEvent()"></td>\
+                          <td class="p-3"><input type="button" value="Delete" onclick="deleteEvent('+e.eventID+')"></td>\
                           ');
 
                       //$temp.find("td:first").click(function() {
@@ -124,7 +124,7 @@
 
   getEvent();
 
-  function deleteEvent(){
-    console.log('hi');
+  function deleteEvent(event_id){
+    console.log(event_id);
   }
 </script>
