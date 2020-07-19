@@ -144,7 +144,7 @@
     console.log('like!!');
     var user_id = sessionStorage.getItem("userID");
     console.log(user_id);
-
+    console.log(event_id);
     $.ajax({
       url: "/operation/likeEvent?" + $.param({"eventID":event_id,"userID": user_id}),
       type: "POST",
