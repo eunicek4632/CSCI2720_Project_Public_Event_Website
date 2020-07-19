@@ -267,11 +267,11 @@ router.get('/getUserFavEvents',function(req,res){
         }
         else{
             // var payload ={
-            //     "success": 0,
-            //     "list": result
+            //     "success": 1,
+            //     "list": result.favoriteEvent
             // }
             console.log(result);
-            res.status(200).send();
+            res.status(200).send(result.favoriteEvent);
         }
     })
 });
