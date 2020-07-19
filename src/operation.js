@@ -21,7 +21,7 @@ router.post('/reg', function(req, res) {
             username: req.body['username'],
             password: req.body['password'],
             userID: id,
-            favoriteEvent: []
+            favoriteEvent: [1]
         });
 
         user.save()
@@ -245,7 +245,7 @@ router.post('/likeEvent',async(req,res)=>{
     var user_id = req.query['userID']; 
     console.log('hi'+event_id+'bye'+user_id);
 
-    var list = User.findOne({userID: user_id},{favoriteEvent:1});
+    var list = User.findOne({userID: user_id},{"favoriteEvent":1});
     console.log(list);
     console.log(list.find(element => element == event_id));
 
@@ -258,7 +258,7 @@ router.post('/likeEvent',async(req,res)=>{
 
     
 
-    console.log(doc.username);
+    // console.log(doc.username);
 
     res.status(200).send();
 
