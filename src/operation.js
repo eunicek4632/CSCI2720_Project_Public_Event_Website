@@ -238,11 +238,13 @@ router.delete('/deleteEvent',function(req,res){
 
 router.post('/likeEvent',async(req,res)=>{
     var event_id = req.query['eventID'];
-    var user_id = req.query['userID'];
+    var user_id = req.query['userID']; 
+    console.log('hi'+event_id+'bye'+user_id);
 
-    let doc = await User.findOneAndUpdate({userID: user_id}, {"$push":{"favouriteEvent":event_id}},{"new": true},function(err){
-        if(err)
-            console.log(err);
+    let doc = await User.findOneAndUpdate({userID: user_id}, {"$push":{favouriteEvent:event_id}},{new: true}).then((result)=>{
+        console.log(result);
+    }.catch(error)=>{
+        console.log(err);
     });
 
     console.log(doc.username);
