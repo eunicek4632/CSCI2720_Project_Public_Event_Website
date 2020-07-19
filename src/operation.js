@@ -297,6 +297,32 @@ router.post('/postComment',function(req,res){
     });
     
 });
+
+//
+// Load Comment
+//
+router.get('/loadComment',function(req,res){
+    var event_id = req.query['eventID'];
+
+    
+    console.log(event_id);
+
+    var query = Comment.findOne({eventID: event_id}).select('content');
+
+    query.exec(function(err,result){
+        if (err) {
+            console.log(err);
+        }
+        else{
+
+            var decoded = utf8.decode(result.content);
+            res.status(200).send(decoded);
+        }
+    })
+    
+});
+
+
 //
 // Create Event
 //
