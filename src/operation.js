@@ -1,8 +1,9 @@
 var express = require('express');
 var router = express.Router();
 var mongoose = require('mongoose');
-
+const utf8 = require('utf8');
 const bcrypt = require("bcryptjs")
+
 const saltRounds = 10;
 const fetch = require('node-fetch');
 
@@ -208,7 +209,11 @@ router.get('/flush', function(req, res) {
 // Post Comment
 //
 router.post('/postComment',function(req,res){
+    var data = req.body['comments'];
+    var event_id = req.body['eventID'];
 
+    console.log(data);
+    console.log(event_id);
 });
 //
 // Create Event

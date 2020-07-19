@@ -191,6 +191,7 @@ function processForm(){
   $new.appendTo('#list');
 
   $("#comment").val('');
+  saveComment();
 }
 
 
@@ -209,5 +210,21 @@ function intToRGB() {
 }
 
 intToRGB();
+
+
+function saveComment(){
+  var data = $("#list").html();
+
+  $.ajax({
+    url: '/operation/postComment',
+    type: 'POST',
+    dataType:'text',
+    data: {
+      comments: data,
+      eventID: result[0].eventID
+    }
+
+  });
+}
 
     </script>
