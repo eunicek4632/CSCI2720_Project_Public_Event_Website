@@ -137,7 +137,7 @@ ________________________________________________________________________________
               <circle cx="50" cy="50" r="40" fill="green">
             </circle></svg>
             <div class="media-body">
-                <h5>Name</h5>
+                <h5 id="user_name">Name</h5>
                 <div class = "form-group">
                     <label for = "comment" >Comment:</label><br>
                     <div class = "col-5 form-row">
@@ -161,6 +161,7 @@ var col = 0;
             $(document).find("div.jumbotron").attr("id", result[0].eventID);
             $(document).find("#e_loc").html(result[0].eventLocation);
             $(document).find("#e_org").html(result[0].eventOrganizer);
+            $(document).find("#user_name").html(name);
         //$(document).find("#desc").html(data[0].event_desc);
         });
 
