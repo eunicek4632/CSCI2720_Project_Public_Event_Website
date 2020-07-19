@@ -249,8 +249,9 @@ router.post('/likeEvent',async(req,res)=>{
     query.exec(function(err,result){
         if (err) {console.log(err);}
 
-        console.log(result);
-        console.log(result.find(element => element == event_id));
+        console.log(result.favoriteEvent);
+        list = result.favoriteEvent;
+        console.log(list.find(element => element == event_id));
 
         if (list.find(element => element == event_id)) {
             let doc = User.findOneAndUpdate({userID: user_id}, {$pull:{favoriteEvent:event_id}},{new: true});
