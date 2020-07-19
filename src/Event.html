@@ -166,4 +166,16 @@ function processForm(){
 }
 
 
+function intToRGB() {
+  //credit to https://stackoverflow.com/a/2262117/2737978 for the idea of how to implement
+  var value = sessionStorage.getItem("userID");
+  var blue = Math.floor(value % 256);
+  var green = Math.floor(value / 256 % 256);
+  var red = Math.floor(value / 256 / 256 % 256);
+
+  var result = "rgb(" + red + "," + green + "," + blue + ")";
+
+  $(#icon).css("fill",result);
+}
+
     </script>
