@@ -124,7 +124,7 @@
                       //$temp.find("td:first").click(function() {
                       //    getEachEvent(savedResponse[e.eventID]);
                       //});
-
+                      
                       //if (fav.indexOf(index) == -1) {
                       //$temp.find("button").html("Add to Favourites");
                       //} else {
@@ -133,6 +133,10 @@
                       
                       $temp.find("td:first").on("click", function(){
                           var $k = $(this).parent("tr").attr("id");
+                          result = savedResponse.filter(obj => {
+                                return String(obj.eventID) === $k;
+                          });
+                            changePage('event');
                           //detect click for each event summary
                           //alert($k);
                       });

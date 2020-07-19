@@ -69,7 +69,7 @@ $(document).ready(function(){
                 //find obj from data with event_id
                 //result is an array
                 var result = data.filter(obj => {
-                    return obj.event_id === id;
+                    return String(obj.eventID) === id;
                   })
                 $temp = $(
                     '<div>\
