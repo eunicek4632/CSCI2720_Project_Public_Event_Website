@@ -56,6 +56,106 @@
       <h3 id="na" style="display:none;">No results found</h3>
     </div>
 </div>
+
+
 <script>
+  function getEvent() {
+      $.ajax({
+          url: "/operation/getEvent",
+          type: "GET",
+
+          success: function(response) {
+
+              //var parsed_data = JSON.parse(response);
+              var parsed_data = response;
+              savedResponse = parsed_data.event;
+
+              if (!parsed_data.success) {
+                  return console.log(parsed_data.message);
+              } else {
+
+                  //console.log(parsed_data.event);
+
+                  //parsed_data = JSON.parse(response)
+
+                  savedResponse.map((e, index) => {
+                      //id is a number
+                      //alert(typeof(e.event_id));
+                      var $temp = $('<tr id="' + e.eventID + '">\
+                          <td scope="row" class="p-3">' + e.eventSummary + '</td>\
+                          <td class="p-3">' + e.eventLocation + '</td>\
+                          <td class="p-3 ">' + e.eventOrganizer + '</td>\
+                          <td class="p-4"><input type="button" value="Add" onclick="likeEvent('+e.eventID+')"></td>\
+                          <td class="p-3"><input type="button" value="Delete" onclick="deleteEvent('+e.eventID+')"></td>\
+                          ');
+
+                      //$temp.find("td:first").click(function() {
+                      //    getEachEvent(savedResponse[e.eventID]);
+                      //});
+
+                      //if (fav.indexOf(index) == -1) {
+                      //$temp.find("button").html("Add to Favourites");
+                      //} else {
+                      //$temp.find("button").html("Undo Favourites");
+                      //}
+                      
+                      $temp.find("td:first").on("click", function(){
+                          var $k = $(this).parent("tr").attr("id");
+                          //detect click for each event summary
+                          //alert($k);
+                      });
+                      $temp.find("button").attr("id", index);
+                      $temp.find("button").addClass("like");
+
+                      $("#evts").append($temp);
+                  });
+              }
+          },
+          error: function(error) {
+              console.log('the operation was not loaded', error);
+          },
+          complete: function(xhr, status) {
+              console.log("the request is completed");
+          }
+      });
+
+
+  }
+
+  getEvent();
+
+  function deleteEvent(event_id){
+    console.log('going to delete' + event_id);
+
+    $.ajax({
+      url: "/operation/deleteEvent?" + $.param({"eventID":event_id}),
+      type: "DELETE",
+      success: function(response){
+        console.log('success');
+      },
+      error: function(xhr,status){
+        console.log("the delete request is not completed.");
+      }
+    })
+
+  }
+
+  function likeEvent(event_id){
+    console.log('like!!');
+    var user_id = sessionStorage.getItem("userID");
+    console.log(user_id);
+    console.log(event_id);
+    $.ajax({
+      url: "/operation/likeEvent?" + $.param({"eventID":event_id,"userID": user_id}),
+      type: "POST",
+      success: function(response){
+        console.log('success');
+      },
+      error: function(xhr,status){
+        console.log("the delete request is not completed.");
+      }
+    })
+  }
+
 
 </script>

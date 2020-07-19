@@ -21,7 +21,7 @@ router.post('/reg', function(req, res) {
             username: req.body['username'],
             password: req.body['password'],
             userID: id,
-            favouriteEvent: []
+            favoriteEvent: []
         });
 
         user.save()
@@ -201,5 +201,49 @@ router.get('/flush', function(req, res) {
 
 });
 
+//
+// Post Comment
+//
+router.post('/postComment',function(req,res){
+
+});
+//
+// Create Event
+//
+router.post('/createEvent',function(req,res){
+
+});
+//
+// Update Event
+//
+router.put('/updateEvent',function(req,res){
+
+});
+//
+// Delete Event
+//
+router.delete('/deleteEvent',function(req,res){
+
+    //use event id to delete the event object and comment object of it
+    var event_id = req.query['eventID'];
+    console.log(event_id);
+
+    Event.deleteOne({eventID: event_id}, function(err){
+        if (err) {
+            return console.log(err);
+        }
+    })
+})
+
+router.post('/likeEvent',async(req,res)=>{
+    var event_id = req.query['eventID'];
+    var user_id = req.query['userID']; 
+    console.log('hi'+event_id+'bye'+user_id);
+
+    let doc = await User.findOneAndUpdate({userID: user_id}, {$push:{favoriteEvent:event_id}},{new: true});
+
+    console.log(doc.username);
+
+});
 
 module.exports = router;
