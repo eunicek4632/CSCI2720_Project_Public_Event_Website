@@ -202,4 +202,11 @@
         document.getElementById("login_btn").style.display = "";
         document.getElementById("logout_btn").style.display = "none";
     }
+
+    $(document).ready(function(){
+        $("#evts td:first").on("click", function(){
+            var $k = $(this).parent("tr").attr("id");
+            alert(k);
+        });
+    });
 </script>
