@@ -177,9 +177,9 @@
   //   console.log(document.getElementById(event_id).value.innerHTML());
   // }
 
-  $(".likebtn").live('click',function(){
+  $(document).on('click','.likebtn',function(){
     console.log('why why');
-    console.log($(this).attr('value'));
+    // console.log($(this).attr('value'));
   });
 
   function likeEvent(event_id){
