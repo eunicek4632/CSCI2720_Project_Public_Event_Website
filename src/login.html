@@ -175,6 +175,9 @@
                         //} else {
                         //$temp.find("button").html("Undo Favourites");
                         //}
+                        $temp.find("td:first").addEventListener("click", function(){
+                            alert("clicked");
+                        });
                         $temp.find("button").attr("id", index);
                         $temp.find("button").addClass("like");
 
