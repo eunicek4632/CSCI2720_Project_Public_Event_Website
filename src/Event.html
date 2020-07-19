@@ -75,7 +75,7 @@
         <h4>Add Comment</h4>
         <div class="media">
             <svg height="100" width="100">
-              <circle cx="50" cy="50" r="40" fill="green">
+              <circle cx="50" cy="50" r="40" fill="intToRGB()">
             </circle></svg>
             <div class="media-body">
                 <h5 id="user_name">Name</h5>
@@ -83,14 +83,14 @@
                     <label for = "comment" >Comment:</label><br>
                     <div class = "col-5 form-row">
                         <textarea class = "form-control" id = "comment" rows = "3" cols = "30" name = "comment"></textarea><br>
-                        <button class="btn btn-primary btn-sm" href="#" role="button" id="post">Post</button>
+                        <button class="btn btn-primary btn-sm" href="#" role="button" onclick="processForm()" id="post">Post</button>
                     </div>
                 </div>
             </div>
         </div>
     </p>
   </div>
-    <script>
+<script>
 
 var col = 0;
 
@@ -124,6 +124,21 @@ var col = 0;
         //alert(fav);
     });
 
+
+function processForm(){
+  console.log(hi);
+}
+
+function intToRGB() {
+  //credit to https://stackoverflow.com/a/2262117/2737978 for the idea of how to implement
+  var value = sessionStorage.getItem("userID");
+  console.log(value);
+  var blue = Math.floor(value % 256);
+  var green = Math.floor(value / 256 % 256);
+  var red = Math.floor(value / 256 / 256 % 256);
+
+  return "rgb(" + red + "," + green + "," + blue + ")";
+}
     
 //change text in the diaplay textbox
 function update(str){
