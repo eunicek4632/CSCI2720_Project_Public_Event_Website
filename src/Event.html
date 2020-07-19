@@ -56,3 +56,11 @@
             </div>
         </p>
     </div>
+    <script>
+        $(document).ready(function(){
+            $(document).find("#summary").html(result.eventSummary);
+            $(document).find("#e_id").html("#"+result.eventID);
+            $(document).find("#date").html(result.eventDate);
+        });
+
+    </script>
