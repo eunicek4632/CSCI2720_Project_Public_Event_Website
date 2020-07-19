@@ -1,13 +1,15 @@
 var express = require('express');
 var router = express.Router();
 var mongoose = require('mongoose');
-
+const utf8 = require('utf8');
 const bcrypt = require("bcryptjs")
+
 const saltRounds = 10;
 const fetch = require('node-fetch');
 
 const User = require("./model/User");
 const Event = require("./model/Event");
+const Comment = require("./model/Comment");
 //
 // Create user
 //
@@ -204,25 +206,6 @@ router.get('/flush', function(req, res) {
 
 });
 
-//
-// Post Comment
-//
-router.post('/postComment',function(req,res){
-
-});
-//
-// Create Event
-//
-router.post('/createEvent',function(req,res){
-
-});
-//
-// Update Event
-//
-router.put('/updateEvent',function(req,res){
-
-});
-
 
 //
 // Like an event
@@ -295,8 +278,51 @@ router.get('/getUserFavEvents',function(req,res){
 // Post Comment
 //
 router.post('/postComment',function(req,res){
+    var data = req.body['comments'];
+    var event_id = req.body['eventID'];
+    var encoded = utf8.encode(data);
 
+    // console.log(data);
+    console.log(event_id);
+
+    var query = {eventID: event_id},
+        update = {$set:{content:encoded}},
+        options = { upsert: true, new: true, setDefaultsOnInsert: true };
+
+    // Find the document
+    Comment.findOneAndUpdate(query, update, options, function(error, result) {
+        if (error) console.log(error);
+
+        res.status(200).send();
+    });
+    
 });
+
+//
+// Load Comment
+//
+router.get('/loadComment',function(req,res){
+    var event_id = req.query['eventID'];
+
+    
+    console.log(event_id);
+
+    var query = Comment.findOne({eventID: event_id}).select('content');
+
+    query.exec(function(err,result){
+        if (err) {
+            console.log(err);
+        }
+        else{
+
+            var decoded = utf8.decode(result.content);
+            res.status(200).send(decoded);
+        }
+    })
+    
+});
+
+
 //
 // Create Event
 //
