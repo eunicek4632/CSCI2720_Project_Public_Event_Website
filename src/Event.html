@@ -164,7 +164,6 @@ function show_update(){
 function processForm(){
   console.log('hi');
 
-  console.log('hi');
   var date = new Date();
   var nameValue = document.getElementById('user_name');
   var newComment = document.getElementById('comment').value;
@@ -172,8 +171,8 @@ function processForm(){
   
   let $new = $("<li id='" + date.valueOf()+ "' class='media'><svg><circle></circle></svg> <div class='media-body'><h5></h5><p></p></div></li> ");
 
-  $new.find("h5").html(nameValue);
-  $new.find("p").html(newComment);
+  $new.find("h5").html($("#user_name").val());
+  $new.find("p").html($("#comment").val());
 
   $new.find("svg").attr({
     "height":100,
