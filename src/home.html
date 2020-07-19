@@ -142,8 +142,19 @@
 
   function likeEvent(event_id){
     console.log('like!!');
-    var userID = sessionStorage.getItem("userID");
-    console.log(userID);
+    var user_id = sessionStorage.getItem("userID");
+    console.log(user_id);
+
+    $.ajax({
+      url: "/operation/likeEvent?" + $.param({"eventID":event_id,"userID": user_id}),
+      type: "POST",
+      success: function(response){
+        console.log('success');
+      },
+      error: function(xhr,status){
+        console.log("the delete request is not completed.");
+      }
+    })
   }
 
 

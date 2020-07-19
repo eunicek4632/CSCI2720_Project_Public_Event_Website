@@ -236,5 +236,16 @@ router.delete('/deleteEvent',function(req,res){
     })
 })
 
+router.post('/likeEvent',async(req,res)=>{
+    var event_id = req.query['eventID'];
+    var user_id = req.query['userID'];
+
+    let doc = await User.findOneAndUpdate({userID: user_id}, {$push:{'favouriteEvent':event_id}},{
+        new: true
+    });
+
+    console.log(doc.username);
+
+});
 
 module.exports = router;
