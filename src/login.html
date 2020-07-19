@@ -178,12 +178,12 @@
                         $temp.find("td:first").on("click", function(){
                             var $k = $(this).parent("tr").attr("id");
                             alert($k);
-                            getSingle();
+                            /*
                             result = savedResponse.filter(obj => {
                                 return obj.eventID === $k;
-                            });
+                            });*/
                             changePage('event');
-
+                            getSingle();
                             /*
                             $(document).find("#summary").html(result.eventSummary);
                             $(document).find("#e_id").html("#"+result.eventID);
