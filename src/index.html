@@ -58,12 +58,17 @@
     function changePage(page) {
         var link;
         if (sessionStorage.getItem("userID") == null) {
-            alert("You haven't logged in");
+            
             if (page == 'createAC') {
-                link = "/createAC"
+                link = "/createAC";
+            }else if (page == 'login') {
+                link = "/login";
             }
             else
+            {
+                alert("You haven't logged in");
                 link = "/login";
+            }
         } else {
 
             if (page == 'home') {
