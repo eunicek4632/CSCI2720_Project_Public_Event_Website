@@ -75,7 +75,7 @@
         <h4>Add Comment</h4>
         <div class="media">
             <svg height="100" width="100">
-              <circle cx="50" cy="50" r="40" fill="intToRGB()">
+              <circle id="icon" cx="50" cy="50" r="40" fill="green">
             </circle></svg>
             <div class="media-body">
                 <h5 id="user_name">Name</h5>
@@ -132,12 +132,13 @@ function processForm(){
 function intToRGB() {
   //credit to https://stackoverflow.com/a/2262117/2737978 for the idea of how to implement
   var value = sessionStorage.getItem("userID");
-  console.log(value);
   var blue = Math.floor(value % 256);
   var green = Math.floor(value / 256 % 256);
   var red = Math.floor(value / 256 / 256 % 256);
 
-  return "rgb(" + red + "," + green + "," + blue + ")";
+  var result = "rgb(" + red + "," + green + "," + blue + ")";
+
+  $(#icon).css("fill",result);
 }
     
 //change text in the diaplay textbox
