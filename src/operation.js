@@ -249,11 +249,11 @@ router.post('/likeEvent',async(req,res)=>{
     console.log(list);
     console.log(list.find(element => element == event_id));
 
-    if (list.find(element => element == event_id)) {
-        let doc = User.findOneAndUpdate({userID: user_id}, {$pull:{favoriteEvent:event_id}},{new: true});
-    }else{
-        let doc = User.findOneAndUpdate({userID: user_id}, {$push:{favoriteEvent:event_id}},{new: true});
-    }
+    // if (list.find(element => element == event_id)) {
+    //     let doc = User.findOneAndUpdate({userID: user_id}, {$pull:{favoriteEvent:event_id}},{new: true});
+    // }else{
+    //     let doc = User.findOneAndUpdate({userID: user_id}, {$push:{favoriteEvent:event_id}},{new: true});
+    // }
     
 
     
