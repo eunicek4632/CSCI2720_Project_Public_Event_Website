@@ -71,11 +71,12 @@ ________________________________________________________________________________
         <span class="text-muted" id="date">Date</span>
     </h3>
     <br>
+    <!--
     <div class="lead">
         <h5 class="badge badge-secondary">Description</h5>
         <p class="lead" id="desc">Event Description</p>
     </div>
-
+-->
     <div class="lead">
       <h5 class="badge badge-secondary">Location</h5>
       <p class="lead" id="e_loc">Location</p>
@@ -153,9 +154,6 @@ ________________________________________________________________________________
 var col = 0;
 
         $(document).ready(function(){
-            alert(savedResponse);
-            console.log(result);
-            alert(result.eventSummary);
             $(document).find("#summary").html(result[0].eventSummary);
             $(document).find("#e_id").html("#"+result[0].eventID);
             $(document).find("#date").html(result[0].eventDate);
@@ -164,7 +162,6 @@ var col = 0;
             $(document).find("#e_loc").html(result[0].eventLocation);
             $(document).find("#e_org").html(result[0].eventOrganizer);
         //$(document).find("#desc").html(data[0].event_desc);
-        
         });
 
         $(document).on("click","button.like", function(){
