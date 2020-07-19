@@ -26,39 +26,9 @@ db.once('open', function() {
 //
 var operation = require('./operation.js')
 
-app.use('/operation', operation);
-//
-// Data schema
-//
-var commentSchema = mongoose.Schema({
-    commentID: {
-        type: Number,
-        required: true,
-        unique: true
-    },
-    eventID: {
-        type: String,
-        required: true
-    },
-    userID: {
-        type: Number,
-        required: true
-    },
-    content: {
-        type: String,
-        required: true
-    },
-    timestamp: {
-        type: Date,
-        required: true
-    },
-    like: {
-        type: Number,
-        required: true
-    }
-});
 
-var comment = mongoose.model('comment', commentSchema);
+app.use('/operation', operation);
+
 
 //
 // Routing
@@ -168,3 +138,4 @@ app.get('/favourites', function(req, res) {
 //return filename;
 //}
 //}))
+
