@@ -165,13 +165,13 @@ function processForm(){
   console.log('hi');
 
   var date = new Date();
-  var nameValue = document.getElementById('user_name');
+  var nameValue = name;
   var newComment = document.getElementById('comment').value;
   var colorValue = intToRGB();
   
   let $new = $("<li id='" + date.valueOf()+ "' class='media'><svg><circle></circle></svg> <div class='media-body'><h5></h5><p></p></div></li> ");
 
-  $new.find("h5").html($("#user_name").val());
+  $new.find("h5").html(name);
   $new.find("p").html($("#comment").val());
 
   $new.find("svg").attr({
