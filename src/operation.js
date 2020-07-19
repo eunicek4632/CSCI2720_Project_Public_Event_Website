@@ -15,7 +15,8 @@ router.post('/reg', function(req, res) {
 
     // generate id for user
     var id = Date.now();
-    var hash = bcrypt.hashSync(req.body['password']);
+    var password_input = req.body['password'];
+    var hash = bcrypt.hashSync(password_input);
     try {
         var user = new User({
             username: req.body['username'],
@@ -53,7 +54,8 @@ router.post('/login', async(req, res) => {
     console.log("log in user!");
 
     var username_input = req.body['username'];
-    var password_input = bcrypt.hashSync(req.body['password']);
+    var password_input = req.body['password'];
+    var hash = bcrypt.hashSync(password_input);
 
     try {
         var user = await User.findOne({ username: username_input });
@@ -68,7 +70,7 @@ router.post('/login', async(req, res) => {
 
         
 
-        var isMatch = await bcrypt.compareSync(password_input,user.password);
+        var isMatch = bcrypt.compareSync(hash,user.password);
 
         if (!isMatch) {
             var payload = {
