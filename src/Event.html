@@ -61,9 +61,9 @@
             alert(savedResponse);
             console.log(result);
             alert(result.eventSummary);
-            $(document).find("#summary").html(result.eventSummary[0]);
-            $(document).find("#e_id").html("#"+result.eventID[0]);
-            $(document).find("#date").html(result.eventDate[0]);
+            $(document).find("#summary").html(result[0].eventSummary);
+            $(document).find("#e_id").html("#"+result[0].eventID);
+            $(document).find("#date").html(result[0].eventDate);
         });
         function getSingle(){
             alert("ok");
