@@ -241,11 +241,7 @@ router.post('/likeEvent',async(req,res)=>{
     var user_id = req.query['userID']; 
     console.log('hi'+event_id+'bye'+user_id);
 
-    let doc = await User.findOneAndUpdate({userID: user_id}, {"$push":{favouriteEvent:event_id}},{new: true}).then((result)=>{
-        console.log(result);
-    }.catch(error)=>{
-        console.log(err);
-    });
+    let doc = await User.findOneAndUpdate({userID: user_id}, {$push:{favouriteEvent:event_id}},{new: true});
 
     console.log(doc.username);
 
