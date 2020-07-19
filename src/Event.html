@@ -230,7 +230,7 @@ function saveComment(){
 function loadComment(){
 
   $.ajax({
-    url: '/operation/loadComment?' $.param({"eventID": result[0].eventID}),
+    url: '/operation/loadComment?' + $.param({"eventID": result[0].eventID}),
     type: 'GET',
     success: function(response){
       console.log('success');
