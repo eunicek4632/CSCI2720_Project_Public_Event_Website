@@ -282,7 +282,7 @@ router.post('/postComment',function(req,res){
     var event_id = req.body['eventID'];
     var encoded = utf8.encode(data);
 
-    console.log(data);
+    // console.log(data);
     console.log(event_id);
 
     var query = {eventID: event_id},
