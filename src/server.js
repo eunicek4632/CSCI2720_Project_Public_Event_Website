@@ -63,6 +63,13 @@ var comment = mongoose.model('comment', commentSchema);
 //
 // Routing
 //
+
+app.get('/event', function(req, res) {
+
+    res.sendFile(path.join(__dirname + "/event.html"));
+
+});
+
 app.get('/', function(req, res) {
     res.sendFile(path.join(__dirname + "/index.html"));
     console.log(__dirname);
@@ -91,11 +98,6 @@ app.get('/favourites', function(req, res) {
 
 });
 
-app.get('/event', function(req, res) {
-
-    res.sendFile(path.join(__dirname + "/event.html"));
-
-});
 //
 // Create comment
 //
