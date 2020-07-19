@@ -3,6 +3,7 @@ var router = express.Router();
 var mongoose = require('mongoose');
 
 const bcrypt = require("bcryptjs")
+const saltRounds = 10;
 const fetch = require('node-fetch');
 
 const User = require("./model/User");
@@ -15,13 +16,14 @@ router.post('/reg', function(req, res) {
 
     // generate id for user
     var id = Date.now();
-
+    var password_input = req.body['password'];
+    var hash = bcrypt.hashSync(password_input,saltRounds);
     try {
         var user = new User({
             username: req.body['username'],
-            password: req.body['password'],
+            password: hash,
             userID: id,
-            favoriteEvent: []
+            favoriteEvent: [1]
         });
 
         user.save()
@@ -29,9 +31,7 @@ router.post('/reg', function(req, res) {
         var payload = {
             "success": 1,
             "inserted": {
-                "username": req.body['username'],
-                "userID": id,
-                "password": req.body['password']
+                "userID": id      
             }
         }
 
@@ -56,7 +56,8 @@ router.post('/login', async(req, res) => {
 
     var username_input = req.body['username'];
     var password_input = req.body['password'];
-
+    // var hash = bcrypt.hashSync(password_input);
+    // hash successful
     try {
         var user = await User.findOne({ username: username_input });
 
@@ -68,10 +69,10 @@ router.post('/login', async(req, res) => {
             res.status(211).send(payload);
         }
 
-        console.log("from server" + user.password);
+        
 
-        var isMatch = await (password_input == user.password);
-
+        var isMatch = bcrypt.compareSync(password_input,user.password);
+        console.log(isMatch);
         if (!isMatch) {
             var payload = {
                 "success": 0,
@@ -237,16 +238,72 @@ router.delete('/deleteEvent',function(req,res){
     })
 })
 
+//
+// Like an event
+//
 router.post('/likeEvent',async(req,res)=>{
     var event_id = req.query['eventID'];
     var user_id = req.query['userID']; 
     console.log('hi'+event_id+'bye'+user_id);
 
-    let doc = await User.findOneAndUpdate({userID: user_id}, {$push:{favoriteEvent:event_id}},{new: true});
+    var query = User.findOne({userID: user_id}).select('favoriteEvent');
+    
+    query.exec(async(err,result)=>{
+        if (err) {console.log(err);}
 
-    console.log(doc.username);
+        console.log(result.favoriteEvent);
+        list = result.favoriteEvent;
+
+        var found = list.find(element => element == event_id);
+        console.log('found' + found);
+
+        // great success
+        if (list.find(element => element == event_id) == undefined) {
+            let doc = await User.findOneAndUpdate({userID: user_id}, {$push:{favoriteEvent:event_id}},{new: true});
+            console.log('hi');
+        }else{
+            
+            let doc = await User.findOneAndUpdate({userID: user_id}, {$pull:{favoriteEvent:event_id}});
+            console.log('bye')
+        }
+
+        res.status(200).send();
+    })
+    
+    
+
+    
+
+    // console.log(doc.username);
+
+    
 
 });
+
+//
+// Get user's fav event list
+//
+router.get('/getUserFavEvents',function(req,res){
+    var user_id = req.query['userID']; 
+
+    var query = User.findOne({userID: user_id}).select('favoriteEvent');
+
+    query.exec(function(err,result){
+        if (err) {
+            console.log(err);
+        }
+        else{
+            // var payload ={
+            //     "success": 1,
+            //     "list": result.favoriteEvent
+            // }
+            console.log(result);
+            res.status(200).send(result.favoriteEvent);
+        }
+    })
+});
+
+
 
 //
 // Post Comment

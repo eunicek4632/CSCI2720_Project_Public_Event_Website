@@ -7,7 +7,7 @@
           <li id="event" onclick="search('Event')"><a>Event</a></li>
           <li id="loc" onclick="search('Location')"><a>Location</a></li>
           <li id="org" onclick="search('Organizer')"><a>Organizer</a></li>
-          <!--<li><a href="#">Number of Favourites</a></li>-->
+          <!--<li><a href="#">Number of Favorites</a></li>-->
         </ul>
       </div>
       <div class="media-body">
@@ -32,7 +32,7 @@
       <div class="dropdown-menu media-body" aria-labelledby="navbarDropdown">
         <a class="dropdown-item" href="#">Event ID</a>
         <a class="dropdown-item" href="#">Location ID</a>
-        <a class="dropdown-item" href="#">Number of Favourites</a>
+        <a class="dropdown-item" href="#">Number of Favorites</a>
         <div class="dropdown-divider"></div>
         <a class="dropdown-item" href="#">Something else here</a> 
       </div>-->
@@ -77,7 +77,7 @@
             <th class="p-3" scope="col" onclick="sortTable(0)">Events</th>
             <th class="p-3" scope="col" onclick="sortTable(1)">Location</th>
             <th class="p-3" scope="col" onclick="sortTable(2)">Organizer</th>
-            <th class="p-4" scope="col">Add to Favourites</th>
+            <th class="p-4" scope="col">Add to Favorites</th>
             <th class="p-3" scope="col">Delete</th>
           </tr>
         </thead>
@@ -109,27 +109,23 @@
                   //console.log(parsed_data.event);
 
                   //parsed_data = JSON.parse(response)
-
+                  console.log(fav);
                   savedResponse.map((e, index) => {
                       //id is a number
                       //alert(typeof(e.event_id));
+                      var flag;
+                      
+                      if(fav.find(element => element == e.eventID))
+                        flag = 'Undo';
+                      else
+                        flag = 'Add'; 
                       var $temp = $('<tr id="' + e.eventID + '">\
                           <td scope="row" class="p-3">' + e.eventSummary + '</td>\
                           <td class="p-3">' + e.eventLocation + '</td>\
                           <td class="p-3 ">' + e.eventOrganizer + '</td>\
-                          <td class="p-4"><input type="button" value="Add" onclick="likeEvent('+e.eventID+')"></td>\
-                          <td class="p-3"><input type="button" value="Delete" onclick="deleteEvent('+e.eventID+')"></td>\
+                          <td class="p-4"><input type="button" value='+flag+' onclick="likeEvent('+e.eventID+');" class="likebtn" ></td>\
+                          <td class="p-3"><input type="button" value="Delete" onclick="deleteEvent('+e.eventID+')" ></td>\
                           ');
-
-                      //$temp.find("td:first").click(function() {
-                      //    getEachEvent(savedResponse[e.eventID]);
-                      //});
-                      
-                      //if (fav.indexOf(index) == -1) {
-                      //$temp.find("button").html("Add to Favourites");
-                      //} else {
-                      //$temp.find("button").html("Undo Favourites");
-                      //}
                       
                       $temp.find("td:first").on("click", function(){
                           var $k = $(this).parent("tr").attr("id");
@@ -157,7 +153,7 @@
 
 
   }
-
+  getUserFavEvents();
   getEvent();
 
   function deleteEvent(event_id){
@@ -176,16 +172,55 @@
 
   }
 
+  // function toggleLike(event_id){
+  //   console.log('well'+ event_id);
+  //   console.log(document.getElementById(event_id).value.innerHTML());
+  // }
+
+  $(document).on('click','.likebtn',function(){
+    // console.log($(this).attr('value'));
+    if ( $(this).attr('value') == 'Undo') {
+      $(this).val('Add');
+    }
+    else{
+      $(this).val('Undo');
+    }
+
+  });
+
   function likeEvent(event_id){
     console.log('like!!');
+
     var user_id = sessionStorage.getItem("userID");
-    console.log(user_id);
-    console.log(event_id);
+    // console.log(user_id);
+    // console.log(event_id);
     $.ajax({
       url: "/operation/likeEvent?" + $.param({"eventID":event_id,"userID": user_id}),
       type: "POST",
       success: function(response){
         console.log('success');
+        
+      },
+      error: function(xhr,status){
+        console.log("the delete request is not completed.");
+      },
+      complete: function(xhr, status) {
+            getUserFavEvents();
+            console.log("the request is completed");
+      }
+    })
+  }
+
+  function getUserFavEvents(){
+    console.log('Now get fav events!');
+    var user_id = sessionStorage.getItem("userID");
+    $.ajax({
+      url: "/operation/getUserFavEvents?"+ $.param({"userID": user_id}),
+      type: "GET",
+      success: function(response){
+        console.log('success');
+        console.log(response);
+        fav = response;
       },
       error: function(xhr,status){
         console.log("the delete request is not completed.");
@@ -296,25 +331,7 @@ function sortTable(n) {
         }
     }
 }
-    //toggle favourites
-    $(document).on("click", "button.like", function() {
-        var id = $(this).attr("id");
-        //id is a string
-        //alert(typeof(id));
-        var index = fav.indexOf(id);
-        //alert(index);
 
-        //if the event is not one of favourites
-        if (index > -1) {
-            fav.push(id);
-            $(this).html("Undo Favourites");
-
-        } else {
-            fav.splice(id, 1);
-            $(this).html("Add to Favourites");
-        }
-        alert(fav);
-    });
 //check if the add form has any empty fields
 //note: need to add new event to database
 function add_evt(){
@@ -332,7 +349,7 @@ function add_evt(){
     <td scope="row" class="p-3">'+e_summ+'</td>\
     <td class="p-3">'+e_loc+'</td>\
     <td class="p-3 ">'+ e_org + '</td>\
-    <td class="p-4"><button>Add to Favourites</button></td>\
+    <td class="p-4"><button>Add to Favorites</button></td>\
     <td class="p-3"><input class="del" type="button" value="Delete"></td>\
     ');
     $temp.find("button").attr("id",new_index);
