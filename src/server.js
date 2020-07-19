@@ -91,7 +91,11 @@ app.get('/favourites', function(req, res) {
 
 });
 
+app.get('/event', function(req, res) {
 
+    res.sendFile(path.join(__dirname + "/event.html"));
+
+});
 //
 // Create comment
 //

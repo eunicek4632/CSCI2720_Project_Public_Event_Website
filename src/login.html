@@ -178,7 +178,7 @@
                         
                         $temp.find("td:first").on("click", function(){
                             var $k = $(this).parent("tr").attr("id");
-                            changePage('login');
+                            changePage('event');
 
                             var result = savedResponse.filter(obj => {
                                 return obj.eventID === $k;
