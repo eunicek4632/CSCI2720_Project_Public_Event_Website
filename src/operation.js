@@ -205,29 +205,6 @@ router.get('/flush', function(req, res) {
 
 });
 
-//
-// Post Comment
-//
-router.post('/postComment',function(req,res){
-    var data = req.body['comments'];
-    var event_id = req.body['eventID'];
-
-    console.log(data);
-    console.log(event_id);
-});
-//
-// Create Event
-//
-router.post('/createEvent',function(req,res){
-
-});
-//
-// Update Event
-//
-router.put('/updateEvent',function(req,res){
-
-});
-
 
 //
 // Like an event
@@ -300,7 +277,24 @@ router.get('/getUserFavEvents',function(req,res){
 // Post Comment
 //
 router.post('/postComment',function(req,res){
+    var data = req.body['comments'];
+    var event_id = req.body['eventID'];
+    var encoded = utf8.encoded(data);
 
+    console.log(data);
+    console.log(event_id);
+
+    var query = {eventID: event_id},
+        update = {$set:{content:encoded}},
+        options = { upsert: true, new: true, setDefaultsOnInsert: true };
+
+    // Find the document
+    Comment.findOneAndUpdate(query, update, options, function(error, result) {
+        if (error) console.log(error);
+
+        res.status(200).send();
+    });
+    
 });
 //
 // Create Event
