@@ -247,7 +247,7 @@ router.post('/likeEvent',async(req,res)=>{
 
     var query = User.findOne({userID: user_id}).select('favoriteEvent');
     
-    query.exec(function(err,result){
+    query.exec(async(err,result)=>{
         if (err) {console.log(err);}
 
         console.log(result.favoriteEvent);
@@ -256,11 +256,11 @@ router.post('/likeEvent',async(req,res)=>{
         console.log( list.find(element => element == event_id));
 
         if (list.find(element => element == event_id) !== "undefined") {
-            let doc = User.findOneAndUpdate({userID: user_id}, {$push:{favoriteEvent:event_id}},{new: true});
+            let doc = await User.findOneAndUpdate({userID: user_id}, {$push:{favoriteEvent:event_id}},{new: true});
             console.log('hi');
         }else{
             
-            let doc = User.findOneAndUpdate({userID: user_id}, {$pull:{favoriteEvent:event_id}},{new: true});
+            let doc = await User.findOneAndUpdate({userID: user_id}, {$pull:{favoriteEvent:event_id}},{new: true});
             console.log('bye')
         }
 
