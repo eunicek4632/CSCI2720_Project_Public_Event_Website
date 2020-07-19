@@ -9,6 +9,7 @@ const fetch = require('node-fetch');
 
 const User = require("./model/User");
 const Event = require("./model/Event");
+const Comment = require("./model/Comment");
 //
 // Create user
 //
