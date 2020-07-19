@@ -8,10 +8,10 @@ app.use(bodyParser.urlencoded({
 }))
 
 var mongoose = require('mongoose');
-mongoose.connect('mongodb://thcheng6:x79714@localhost/thcheng6');
+mongoose.connect('mongodb://hyko9:x82718@localhost/hyko9');
 
 //listen to port x
-var server = app.listen(2019);
+var server = app.listen(2010);
 
 var db = mongoose.connection;
 //upon connection failure
