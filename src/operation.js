@@ -227,8 +227,13 @@ router.delete('/deleteEvent',function(req,res){
 
     //use event id to delete the event object and comment object of it
     var event_id = req.query['eventID'];
-
     console.log(event_id);
+
+    Event.deleteOne({eventID: event_id}, function(err){
+        if (err) {
+            console.log(err);
+        }
+    })
 })
 
 
