@@ -177,14 +177,16 @@
                         
                         $temp.find("td:first").on("click", function(){
                             var $k = $(this).parent("tr").attr("id");
-                            changePage('event');
-
-                            var result = savedResponse.filter(obj => {
+                            result = savedResponse.filter(obj => {
                                 return obj.eventID === $k;
                             });
+                            changePage('event');
+
+                            /*
                             $(document).find("#summary").html(result.eventSummary);
                             $(document).find("#e_id").html("#"+result.eventID);
                             $(document).find("#date").html(result.eventDate);
+                            */
                             //$(document).find("#desc").html(result.event_desc);
                             //$(document).find("#ics").attr("href", data[0].event_ics);
                             //detect click for each event summary
