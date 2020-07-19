@@ -279,7 +279,7 @@ router.get('/getUserFavEvents',function(req,res){
 router.post('/postComment',function(req,res){
     var data = req.body['comments'];
     var event_id = req.body['eventID'];
-    var encoded = utf8.encoded(data);
+    var encoded = utf8.encode(data);
 
     console.log(data);
     console.log(event_id);
