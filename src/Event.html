@@ -82,7 +82,7 @@
                     <label for = "comment" >Comment:</label><br>
                     <div class = "col-5 form-row">
                         <textarea class = "form-control" id = "comment" rows = "3" cols = "30" name = "comment"></textarea><br>
-                        <button class="btn btn-primary btn-sm" href="#" role="button" id="post">Post</button>
+                        <button  onclick="processForm()"class="btn btn-primary btn-sm" href="#" role="button" id="post">Post</button>
                     </div>
                 </div>
             </div>
@@ -159,6 +159,10 @@ function show_update(){
     else{
       document.getElementById("update_form").style.display = "none";
     }
+}
+
+function processForm(){
+  console.log(hi);
 }
 
 
