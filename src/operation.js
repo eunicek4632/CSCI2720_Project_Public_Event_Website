@@ -223,7 +223,7 @@ router.put('/updateEvent',function(req,res){
 //
 // Delete Event
 //
-router.delete('deleteEvent',function(req,res){
+router.delete('/deleteEvent',function(req,res){
 
     //use event id to delete the event object and comment object of it
     var event_id = req.query('event_id');
