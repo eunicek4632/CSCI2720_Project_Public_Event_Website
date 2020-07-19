@@ -127,31 +127,31 @@ var col = 0;
 
 function processForm(){
   console.log('hi');
-  var date = new Date();
-  var nameValue = document.getElementById('user_name');
-  var newComment = document.getElementById('comment')
-  var colorValue = intToRGB();
+  // var date = new Date();
+  // var nameValue = document.getElementById('user_name');
+  // var newComment = document.getElementById('comment')
+  // var colorValue = intToRGB();
   
-  let $new = $("<li id='" + date.valueOf()+ "' class='media'><svg><circle></circle></svg> <div class='media-body'><h5></h5><p></p></div></li> ");
+  // let $new = $("<li id='" + date.valueOf()+ "' class='media'><svg><circle></circle></svg> <div class='media-body'><h5></h5><p></p></div></li> ");
 
-  $new.find("h5").html(nameValue);
-  $new.find("p").html(newComment);
+  // $new.find("h5").html(nameValue);
+  // $new.find("p").html(newComment);
 
-  $new.find("svg").attr({
-    "height":100,
-    "width":100
-  });
+  // $new.find("svg").attr({
+  //   "height":100,
+  //   "width":100
+  // });
 
-  $new.find("circle").attr({
-    "cx":50,
-    "cy":50,
-    "r":40,
-    "fill": colorValue
-  });
+  // $new.find("circle").attr({
+  //   "cx":50,
+  //   "cy":50,
+  //   "r":40,
+  //   "fill": colorValue
+  // });
 
-  $new.appendTo('#list');
+  // $new.appendTo('#list');
 
-  $("#comment").val('');
+  // $("#comment").val('');
 }
 
 function intToRGB() {
