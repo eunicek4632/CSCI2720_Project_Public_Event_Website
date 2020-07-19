@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-var commentSchema = mongoose.commentSchema({
+var commentSchema = mongoose.Schema({
 	    eventID: {
 	        type: String,
 	        required: true
