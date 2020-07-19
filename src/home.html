@@ -128,7 +128,7 @@
     console.log('going to delete' + event_id);
 
     $.ajax({
-      url: "operation/deleteEvent?" + $.param({"eventID":event_id}),
+      url: "/operation/deleteEvent?" + $.param({"eventID":event_id}),
       type: "DELETE",
       success: function(response){
         console.log('success');
