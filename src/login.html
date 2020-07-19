@@ -180,7 +180,7 @@
                             alert($k);
                             console.log(savedResponse[0]);
                             result = savedResponse.filter(obj => {
-                                return obj.eventID === $k;
+                                return String(obj.eventID) === $k;
                             });
                             changePage('event');
                             /*
