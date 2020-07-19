@@ -174,7 +174,7 @@
 
   function likeEvent(event_id){
     console.log('like!!');
-    var flag =document.getElementById(event_id);
+    var flag =document.getElementById('"'+event_id+'"');
      console.log('like!!' + flag.value);
     if (flag.value == 'Add to Favorites') {
       flag.value = 'Undo Favorites';
