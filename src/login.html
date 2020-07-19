@@ -25,67 +25,7 @@
 
 <script>
     var savedResponse;
-    /*
-                                                                                                                                jQuery.fn.clickToggle = function(a,b) {
-                                                                                                                                  var ab = [b,a];
-                                                                                                                                  return this.on("click", function(){ ab[this._tog^=1].call(this); });
-                                                                                                                                };
-
-                                                                                                                                  $(document).ready(function(){
-                                                                                                                                    $("#new").clickToggle(function(){
-                                                                                                                                      //for login 
-                                                                                                                                      var username1 = document.getElementById("username").value;
-                                                                                                                                        var password1 = document.getElementById("pw").value;
-                                                                                                                                        if (username1 == '' || password1 == '')
-                                                                                                                                            alert("You cannot leave any of the fields empty");
-                                                                                                                                        else {
-                                                                                                                                                
-                                                                                                                                                $.ajax({
-                                                                                                                                                  url: "/operation/login",
-                                                                                                                                                  type: "POST",
-                                                                                                                                                  dataType: "text",
-                                                                                                                                                  data : {username: username1, password: password1},
-
-                                                                                                                                                  success: function(response) {
-
-                                                                                                                                                    var parsed_data = JSON.parse(response);
-
-                                                                                                                                                    if (!parsed_data.success ) {
-                                                                                                                                                      return console.log(parsed_data.message);
-                                                                                                                                                    }
-                                                                                                                                                    else{
-                                                                                                                                                      console.log('user id is'+ parsed_data.credential);
-                                                                                                                                                      sessionStorage.setItem("userID", parsed_data.credential);
-                                                                                                                                                      changePage('home');
-                                                                                                                                                      //note: added a few lines and log_out() function
-                                                                                                                                                      var msg = "Welcome, " + parsed_data.credential;
-                                                                                                                                                      document.getElementById("log_user").innerHTML = msg;
-                                                                                                                                                      document.getElementById("log_btn").innerHTML = "Log out";
-                                                                                                                                                      document.getElementById("log_btn").setAttribute("onclick",log_out());
-                                                                                                                                                    }
-
-                                                                                                                                                    
-                                                                                                                                                    
-
-                                                                                                                                                  },
-                                                                                                                                                  error: function(error){
-                                                                                                                                                    console.log('the operation was not loaded',error);
-                                                                                                                                                  },
-                                                                                                                                                  complete: function(xhr, status){
-                                                                                                                                                    console.log("the request is completed");
-                                                                                                                                                  }
-                                                                                                                                                });
-                                                                                                                                              }
-                                                                                                                                      }, function(){
-                                                                                                                                          //for logout
-                                                                                                                                          sessionStorage.removeItem("userID");
-                                                                                                                                          console.log("log out!");
-                                                                                                                                          document.getElementById("log_user").innerHTML = "";
-                                                                                                                                          document.getElementById("log_btn").innerHTML = "Log in";
-                                                                                                                                          changePage("login");
-                                                                                                                                      });
-                                                                                                                                  });
-                                                                                                                                */
+                                                                                                               
     function verify() {
         var username1 = document.getElementById("username").value;
         var password1 = document.getElementById("pw").value;
@@ -119,8 +59,7 @@
                         //document.getElementById("login_btn").innerHTML = "Log out";
                         //document.getElementById("login_btn").setAttribute("onclick",log_out());
                         document.getElementById("login_btn").style.display = "none";
-                        document.getElementById("logout_btn").style.display = "";
-                        getEvent();
+                        document.getElementById("logout_btn").style.display = "";                    
                     }
 
                 },
@@ -136,68 +75,68 @@
         }
     }
 
-    function getEvent() {
-        $.ajax({
-            url: "/operation/getEvent",
-            type: "GET",
+    // function getEvent() {
+    //     $.ajax({
+    //         url: "/operation/getEvent",
+    //         type: "GET",
 
-            success: function(response) {
+    //         success: function(response) {
 
-                //var parsed_data = JSON.parse(response);
-                var parsed_data = response;
-                savedResponse = parsed_data.event;
+    //             //var parsed_data = JSON.parse(response);
+    //             var parsed_data = response;
+    //             savedResponse = parsed_data.event;
 
-                if (!parsed_data.success) {
-                    return console.log(parsed_data.message);
-                } else {
+    //             if (!parsed_data.success) {
+    //                 return console.log(parsed_data.message);
+    //             } else {
 
-                    //console.log(parsed_data.event);
+    //                 //console.log(parsed_data.event);
 
-                    //parsed_data = JSON.parse(response)
+    //                 //parsed_data = JSON.parse(response)
 
-                    savedResponse.map((e, index) => {
-                        //id is a number
-                        //alert(typeof(e.event_id));
-                        var $temp = $('<tr id="' + e.eventID + '">\
-                            <td scope="row" class="p-3">' + e.eventSummary + '</td>\
-                            <td class="p-3">' + e.eventLocation + '</td>\
-                            <td class="p-3 ">' + e.eventOrganizer + '</td>\
-                            <td class="p-4"><button></button></td>\
-                            <td class="p-3"><input type="button" value="Delete"></td>\
-                            ');
+    //                 savedResponse.map((e, index) => {
+    //                     //id is a number
+    //                     //alert(typeof(e.event_id));
+    //                     var $temp = $('<tr id="' + e.eventID + '">\
+    //                         <td scope="row" class="p-3">' + e.eventSummary + '</td>\
+    //                         <td class="p-3">' + e.eventLocation + '</td>\
+    //                         <td class="p-3 ">' + e.eventOrganizer + '</td>\
+    //                         <td class="p-4"><button></button></td>\
+    //                         <td class="p-3"><input type="button" value="Delete"></td>\
+    //                         ');
 
-                        //$temp.find("td:first").click(function() {
-                        //    getEachEvent(savedResponse[e.eventID]);
-                        //});
+    //                     //$temp.find("td:first").click(function() {
+    //                     //    getEachEvent(savedResponse[e.eventID]);
+    //                     //});
 
-                        //if (fav.indexOf(index) == -1) {
-                        //$temp.find("button").html("Add to Favourites");
-                        //} else {
-                        //$temp.find("button").html("Undo Favourites");
-                        //}
+    //                     //if (fav.indexOf(index) == -1) {
+    //                     //$temp.find("button").html("Add to Favourites");
+    //                     //} else {
+    //                     //$temp.find("button").html("Undo Favourites");
+    //                     //}
                         
-                        $temp.find("td:first").on("click", function(){
-                            var $k = $(this).parent("tr").attr("id");
-                            //detect click for each event summary
-                            //alert($k);
-                        });
-                        $temp.find("button").attr("id", index);
-                        $temp.find("button").addClass("like");
+    //                     $temp.find("td:first").on("click", function(){
+    //                         var $k = $(this).parent("tr").attr("id");
+    //                         //detect click for each event summary
+    //                         //alert($k);
+    //                     });
+    //                     $temp.find("button").attr("id", index);
+    //                     $temp.find("button").addClass("like");
 
-                        $("#evts").append($temp);
-                    });
-                }
-            },
-            error: function(error) {
-                console.log('the operation was not loaded', error);
-            },
-            complete: function(xhr, status) {
-                console.log("the request is completed");
-            }
-        });
+    //                     $("#evts").append($temp);
+    //                 });
+    //             }
+    //         },
+    //         error: function(error) {
+    //             console.log('the operation was not loaded', error);
+    //         },
+    //         complete: function(xhr, status) {
+    //             console.log("the request is completed");
+    //         }
+    //     });
 
 
-    }
+    // }
 
     function log_out() {
         //note: need to save data of user before log out
