@@ -233,8 +233,6 @@ router.delete('/deleteEvent',function(req,res){
         if (err) {
             return console.log(err);
         }
-
-        changePage('home');
     })
 })
 
