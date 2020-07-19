@@ -222,21 +222,7 @@ router.post('/createEvent',function(req,res){
 router.put('/updateEvent',function(req,res){
 
 });
-//
-// Delete Event
-//
-router.delete('/deleteEvent',function(req,res){
 
-    //use event id to delete the event object and comment object of it
-    var event_id = req.query['eventID'];
-    console.log(event_id);
-
-    Event.deleteOne({eventID: event_id}, function(err){
-        if (err) {
-            return console.log(err);
-        }
-    })
-})
 
 //
 // Like an event
@@ -323,13 +309,21 @@ router.post('/createEvent',function(req,res){
 router.put('/updateEvent',function(req,res){
 
 });
+
 //
 // Delete Event
 //
-router.delete('deleteEvent',function(req,res){
+router.delete('/deleteEvent',function(req,res){
 
-	//use event id to delete the event object and comment object of it
+    //use event id to delete the event object and comment object of it
+    var event_id = req.query['eventID'];
+    console.log(event_id);
 
+    Event.deleteOne({eventID: event_id}, function(err){
+        if (err) {
+            return console.log(err);
+        }
+    })
 })
 
 module.exports = router;
